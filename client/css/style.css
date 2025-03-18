@@ -1,3 +1,36 @@
 .bg-nav-perso {
-    background-color: aqua !important;
+    background-color: darkkhaki !important;
+    color: white;
+}
+
+.posToast {
+    position: absolute;
+    top: 5%;
+    left: 40%;
+}
+
+#textToast {
+    background-color: crimson;
+    color: white;
+}
+
+#idFormEnreg, #idFormConnexion{
+    background-color:lightblue;
+}
+
+.modal-header{
+    background-color: red;
+    color: white;
+}
+.modal-body{
+    margin: 0px;
+}
+
+.btn-bottom-perso{
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.modal {
+    padding: 0px;
+    margin:0px;
 }

@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exemple</title>
     <link rel="stylesheet" href="client/utilitaires/bootstrap-5.3.3-dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="client/utilitaires/icons-1.8.1/bootstrap-icons.css">
-    <link rel="stylesheet" href="client/utilitaires/font-awesome.min.css">
+    <link rel="stylesheet" href="client/utilitaires/bootstrap-icons-1.11.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="client/css/style.css">
     <script src="client/utilitaires/jquery-3.7.1.min.js"></script>
     <script src="client/utilitaires/bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
@@ -53,7 +52,7 @@
                     </div>
                     <div class="modal-body">
                         <form id="idFormEnreg" action="serveur/src/controleurs/controleurMembre.php" method="POST"
-                            enctype="multipart/form-data" class="row g-3" onSubmit="return validerFormEnreg();">
+                            enctype="multipart/form-data" class="row" onSubmit="return validerFormEnreg();">
                             <div class="col-md-6">
                                 <label for="prenom" class="form-label">Prénom</label>
                                 <input type="text" class="form-control is-valid" id="prenom" name="prenom" required>
@@ -94,12 +93,13 @@
                                     <input type="file" class="form-control is-valid" id="photo" name="photo">
                             </div>
                             <input type="hidden" name="action" value="enregistrer">
-                            <div class="col-12">
+                            <div class="col-3 btn-bottom-perso">
                                 <button class="btn btn-primary" type="submit">Enregistrer</button>
                             </div>
+                            <div class="col-3 btn-bottom-perso">
+                                <button class="btn btn-secondary" type="reset">Vider</button>
+                            </div>
                         </form>
-                    </div>
-                    <div class="modal-footer">
                     </div>
                 </div>
             </div>
@@ -115,7 +115,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="row g-3" id="formConnexion" action="serveur/src/connexion/connexion.php" method="POST">
+                    <form class="row" id="idFormConnexion" action="serveur/src/connexion/connexion.php" method="POST">
                         <div class="col-md-12">
                             <label for="courriel" class="form-label">Courriel</label>
                             <input type="email" class="form-control" id="courrielco" name="courrielco" required>
@@ -125,8 +125,11 @@
                             <!-- pattern="[A-Za-z0-9_\$#\-]{6,10}$" -->
                             <input type="password" class="form-control" id="mdpco" name="mdpco" required>
                         </div>
-                        <div class="col-12">
+                        <div class="col-3 btn-bottom-perso">
                             <button class="btn btn-primary" type="submit">Connexion</button>
+                        </div>
+                        <div class="col-3 btn-bottom-perso">
+                            <button class="btn btn-secondary" type="reset">Vider</button>
                         </div>
                     </form>
                 </div>

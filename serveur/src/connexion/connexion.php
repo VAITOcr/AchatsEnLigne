@@ -1,5 +1,5 @@
 <?php
-    require_once('../includes/bd/connexion.inc.php');
+    require_once(__DIR__.'/../includes/bd/connexion.inc.php');
 
     // Récupérer les données
     $courriel = $_POST['courrielco'];
@@ -34,4 +34,8 @@
             $msg = "Vous devez contacter l'administrateur du site.";
         }
     }
+    // urlencode() garantit que $msg est transmis sans erreur, 
+    // surtout s’il contient des caractères spéciaux ou des espaces.
+    header('Location:  ../../../index.html?msg='.urlencode($msg));
+    exit();
 ?>

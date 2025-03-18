@@ -19,5 +19,5 @@ CREATE TABLE connexion(
 	CONSTRAINT connexion_idm_FK FOREIGN KEY (idm) REFERENCES membres(idm)
 );
 
-INSERT INTO membres VALUES(0,"admin","admin","F", "1985-03-18","avatar.png");
+INSERT INTO membres VALUES(1,"admin","admin","F", "1985-03-18","avatar.png");
 INSERT INTO connexion VALUES(1, "admin@boutique.com","12345",'A','A');
