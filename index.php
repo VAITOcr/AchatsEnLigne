@@ -287,14 +287,24 @@ if (isset($_GET['msg'])){
           <div class="toast-container position-fixed bottom-0 end-0 p-3">
   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header">
-      <strong class="me-auto">Bootstrap</strong>
+      <strong class="me-auto">Message</strong>
       <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
     </div>
     <div id="toastText" class="toast-body">
-      
+        <?= htmlspecialchars($msg) ?>
     </div>
   </div>
 </div>
+
+<!-- <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        <?php if (!empty($msg)): ?>
+            const toastElement = new bootstrap.Toast(document.getElementById("liveToast"));
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+        <?php endif; ?>
+    });
+</script> -->
             
         </section>
 

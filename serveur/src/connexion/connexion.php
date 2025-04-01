@@ -1,41 +1,37 @@
 <?php
-    require_once(__DIR__.'/../includes/bd/connexion.inc.php');
 
-    // Récupérer les données
-    $courriel = $_POST['courrielco'];
-    $pass = $_POST['mdpco'];
+declare (strict_types=1); // Enforce strict types
 
-    // Envoyer la requête au serveur MySQL
-    $requete = "SELECT * FROM connexion WHERE courriel = ? AND pass = ?";
-    $stmt = $connexion->prepare($requete);
-    $stmt->bind_param("ss", $courriel, $pass); 
-    $stmt->execute();
+require_once(__DIR__.'/../includes/env/env_vars.inc.php');
 
-    // Récupérer le resultat retourné par MySQL. Il se trouve dans $reponse
-    $reponse = $stmt->get_result();
+class Connexion {
+    private static $connexion = null;
 
-    if($reponse->num_rows == 0){
-        $msg = "Vérifiez vos paramétres de connexion";
-    }else {
-        $infosConnexion = $reponse->fetch_object();
-        if($infosConnexion->statut == 'A') { // A-Admin. Est-ce que le statut du membre membre est A-Actif
-            // Le reste : vérifier su role est A ou M
-            if($infosConnexion->role == 'A') { // Est-ce un Admin ?
-                header('Location: ../admin/admin.html');
-                exit();
-            } else if($infosConnexion->role == 'M') { // Est-ce un Membre ?                   
-                        header('Location: ../membre/membre.html');
-                        exit();
-                    } else {
-                        // Éventuellement pour d'autres catégories
-                    } 
+    private function __construct() {}
 
-        } else { // Le statut est I-Inactif
-            $msg = "Vous devez contacter l'administrateur du site.";
+    static function getConnexion():PDO {
+        if (self::$connexion == null) {
+            self::connecter();
+        }
+        return self::$connexion;
+    }
+
+    // creer la connexion
+    private static function connecter():void {
+        global $SERVEUR, $USAGER, $PASS, $BD; // Definie dans env_vars.inc.php
+        try {
+            $dns = "mysql:host=$SERVEUR;dbname=$BD";
+            $options = array(
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            ) ;
+            self::$connexion = new PDO($dns, $USAGER, $PASS, $options);
+        } catch (Exception $e) {
+            echo $e->getMessage();
+            echo "ERREUR : Connexion au serveur de BD impossible";
+            exit();
         }
     }
-    // urlencode() garantit que $msg est transmis sans erreur, 
-    // surtout s’il contient des caractères spéciaux ou des espaces.
-    header('Location:  ../../../index.html?msg='.urlencode($msg));
-    exit();
+}
+
+
 ?>
