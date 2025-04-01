@@ -1,15 +1,15 @@
 <?php
-    require_once(__DIR__.'/../includes/bd/connexion.inc.php');
+    require_once(__DIR__.'/connexion.php');
 
     // Récupérer les données
     $courriel = $_POST['courrielco'];
     $pass = $_POST['mdpco'];
+    $connexion = Connexion::getConnexion();
 
     // Envoyer la requête au serveur MySQL
     $requete = "SELECT * FROM connexion WHERE courriel = ? AND pass = ?";
     $stmt = $connexion->prepare($requete);
-    $stmt->bind_param("ss", $courriel, $pass); 
-    $stmt->execute();
+    $stmt->execute([$courriel, $pass]);
 
     // Récupérer le resultat retourné par MySQL. Il se trouve dans $reponse
     $reponse = $stmt->get_result();
