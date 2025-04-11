@@ -1,6 +1,6 @@
 <?php
 
-declare (strict_types=1); // Enforce strict types
+declare(strict_types=1); // Enforce strict types
 
 require_once(__DIR__.'/../includes/env/env_vars.inc.php');
 
@@ -9,22 +9,21 @@ class Connexion {
 
     private function __construct() {}
 
-    static function getConnexion():PDO {
+    static function getConnexion(): PDO {
         if (self::$connexion == null) {
             self::connecter();
         }
         return self::$connexion;
     }
 
-    // creer la connexion
-    private static function connecter():void {
-        global $SERVEUR, $USAGER, $PASS, $BD; // Definie dans env_vars.inc.php
+    // Créer la connexion
+    private static function connecter(): void {
         try {
-            $dns = "mysql:host=$SERVEUR;dbname=$BD";
+            $dns = "mysql:host=" . SERVEUR . ";dbname=" . BD;
             $options = array(
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            ) ;
-            self::$connexion = new PDO($dns, $USAGER, $PASS, $options);
+            );
+            self::$connexion = new PDO($dns, USAGER, PASS, $options);
         } catch (Exception $e) {
             echo $e->getMessage();
             echo "ERREUR : Connexion au serveur de BD impossible";
@@ -32,6 +31,4 @@ class Connexion {
         }
     }
 }
-
-
 ?>

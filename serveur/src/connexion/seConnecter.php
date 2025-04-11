@@ -12,7 +12,7 @@
     $stmt->execute([$courriel, $pass]);
 
     // Récupérer le resultat retourné par MySQL. Il se trouve dans $reponse
-    $reponse = $stmt->get_result();
+    $reponse = $stmt->fetchAll();
 
     if($reponse->num_rows == 0){
         $msg = "Vérifiez vos paramétres de connexion";

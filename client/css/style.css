@@ -1,21 +1,139 @@
-.bg-nav-perso {
-  background-color: rgb(219, 218, 198) !important;
-  color: white;
-  position: fixed;
-  width: 100%;
-  height: 60px;
-  z-index: 1000;
+#top-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #1e1f29;
 }
 
-.header-perso {
-  background-color: rgb(219, 218, 198) !important;
-  color: white;
+.header-links li {
+  display: inline-block;
+  margin-right: 15px;
+  font-size: 12px;
+}
+
+.header-links li:last-child {
+  margin-right: 0px;
+}
+
+.header-links li a {
+  color: #fff;
+}
+
+.header-links li a:hover {
+  color: #d10024;
+}
+
+.header-links li i {
+  color: #d10024;
+  margin-right: 5px;
+}
+
+#header {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #15161d;
+}
+
+.header-logo {
+  float: left;
+}
+
+.header-logo .logo img {
+  display: block;
+  height: 80px;
+  width: auto;
+}
+.header-search form {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  width: 100%;
+  margin-left: 600px;
+}
+
+.header-search form .input {
+  height: 40px;
+  padding: 0 15px;
+  border-radius: 40px 0px 0px 40px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.header-search form .search-btn {
+  height: 40px;
+  background: #d10024;
+  color: #fff;
+  font-weight: 700;
+  border: none;
+  border-radius: 0px 40px 40px 0px;
+  padding: 0 20px;
+  margin-left: -4px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.header-search form .search-btn:hover {
+  transform: scale(1.05);
+}
+
+#navigation {
+  background: #fff;
+  border-bottom: 2px solid #e4e7ed;
+  border-top: 3px solid #d10024;
+}
+
+.main-nav > li + li {
+  margin-left: 30px;
+}
+
+.main-nav > li > a {
+  color: #333 !important;
+  font-weight: 700;
+  padding: 20px 0px;
+}
+
+.main-nav > li > a:hover,
+.main-nav > li > a:focus,
+.main-nav > li.active > a {
+  color: #d10024;
+  background-color: transparent;
+}
+
+.main-nav > li > a:after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: #d10024;
+  -webkit-transition: 0.2s all;
+  transition: 0.2s all;
+  transform-origin: center;
+  transition: width 0.3s ease-out;
+}
+
+.main-nav > li > a:hover:after,
+.main-nav > li > a:focus:after,
+.main-nav > li.active > a:after {
+  width: 100%;
+}
+
+.header-ctn li.nav-toggle {
+  display: none;
 }
 
 .posToast {
   position: absolute;
   top: 5%;
   left: 40%;
+  z-index: 1050;
+}
+
+.toast {
+  opacity: 0;
+  display: none;
+}
+
+.toast.show {
+  opacity: 1;
+  display: block;
 }
 
 #textToast {
@@ -42,6 +160,15 @@
 .modal {
   padding: 0px;
   margin: 0px;
+}
+
+.modal.fade .modal-dialog {
+  transform: scale(0.8);
+  transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1);
 }
 
 .footer {
@@ -149,4 +276,66 @@ footer a {
 
 footer a img {
   vertical-align: middle;
+}
+
+.dropdown-menu {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.dropdown-menu.show {
+  animation: slideUp 0.3s ease forwards;
+  opacity: 1;
+}
+
+/* Add smooth transitions to buttons and links */
+.btn,
+a {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Enhance form inputs with subtle animation */
+.form-control:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Add hover effects to cards/panels */
+.panel,
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.panel:hover,
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhance button hover states */
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Add loading animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+/* Add smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
 }
