@@ -36,15 +36,14 @@ class ControleurArticles{
         // Vérifie si l'article existe déjà
         $articleExist = $this->daoArticles->getArticleById($id);
         if ($articleExist) {
-            $msg = "L'article existe déjà.";
-            return;
+            echo json_encode(['success' => false, 'message' => "L'article existe déjà."]);
+        return;
         }
         // Ajoute l'article à la base de données
-       if ($this->daoArticles->addArticle($id, $name, $description, $price)) {
-            $msg = "L'article a été ajouté avec succès !";
+        if ($this->daoArticles->addArticle($id, $name, $description, $price)) {
+              echo json_encode(['success' => true, 'message' => "L'article a été ajouté avec succès !"]);
         } else {
-            $msg = "Une erreur s'est produite lors de l'ajout de l'article.";
-            // exit ("Erreur lors de l'ajout de l'article : " . $msg);  
+            echo json_encode(['success' => false, 'message' => "Une erreur s'est produite lors de l'ajout de l'article."]);
         }
     }
 
@@ -53,12 +52,14 @@ class ControleurArticles{
         // Vérifie si l'article existe
         $articleExist = $this->daoArticles->getArticleById($id);
         if (!$articleExist) {
-            $msg = "L'article n'existe pas.";
+            echo json_encode(['success' => false, 'message' => "L'article n'existe pas."]);
             return;
-        }elseif ($this->daoArticles->updateArticle($id, $name, $description, $price)) {
-            $msg = "L'article a été modifié avec succès !";
+        }
+        
+        if ($this->daoArticles->updateArticle($id, $name, $description, $price)) {
+           echo json_encode(['success' => true, 'message' => "L'article a été modifié avec succès !"]);
         } else {
-            $msg = "Une erreur s'est produite lors de la modification de l'article.";
+            echo json_encode(['success' => false, 'message' => "Une erreur s'est produite lors de la modification de l'article."]);
         }
     }
 
@@ -66,14 +67,16 @@ class ControleurArticles{
         // Vérifie si l'article existe
         $articleExist = $this->daoArticles->getArticleById($id);
         if (!$articleExist) {
-            $msg = "L'article n'existe pas.";
+            echo json_encode(['success' => false, 'message' => "L'article n'existe pas."]);
             return;
-        } elseif ($this->daoArticles->deleteArticle($id)) {
-            $msg = "L'article a été supprimé avec succès !";
-            header('Location: index.php?msg='.urlencode($msg));
+        }
+        
+        if ($this->daoArticles->deleteArticle($id)) {
+            echo json_encode(['success' => true, 'message' => "L'article a été supprimé avec succès !"]);
+            return true;
         } else {
-            $msg = "Une erreur s'est produite lors de la suppression de l'article.";
-            header('Location: index.php?msg='.urlencode($msg));
+            echo json_encode(['success' => false, 'message' => "Une erreur s'est produite lors de la suppression de l'article."]);
+            return false;
         }
     }
 }
