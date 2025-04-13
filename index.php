@@ -18,7 +18,7 @@ if (isset($_GET['msg'])){
     <link type="text/css" rel="stylesheet" href="client/css/style.css"/>
     
     <script src="client/utilitaires/jquery-3.7.1.min.js"></script>
-    <script src="client/utilitaires/js/bootstrap.bundle.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="client/js/global.js"></script>
     <script src="client/js/requetes.js"></script>
 </head>
@@ -30,37 +30,59 @@ if (isset($_GET['msg'])){
     </nav>
 
 
+        <div class="container carouselIndex">
+            <div class="row">
+                <div class="col-md-12 ">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="7000">
+        
+                    <!-- Indicateurs -->
+                    <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    </ol>
 
+                        <!-- Slides -->
+                        <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <div class="custom-cardIndex text-center">
+                            <h3>Produit 1</h3>
+                            <p>Une description  pour le produit 1.</p>
+                            <a href="#" class="btn btn-primary">Acheter</a>
+                            </div>
+                        </div>
 
+                        <div class="item">
+                            <div class="custom-cardIndex text-center">
+                            <h3>Produit 2</h3>
+                            <p>Quelques infos sur le produit 2.</p>
+                            <a href="#" class="btn btn-success">Voir plus</a>
+                            </div>
+                        </div>
 
+                        <div class="item">
+                            <div class="custom-cardIndex text-center">
+                            <h3>Produit 3</h3>
+                            <p>Description du produit 3 avec une action.</p>
+                            <a href="#" class="btn btn-warning">Découvrir</a>
+                            </div>
+                        </div>
+                        </div>
 
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Précédent</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Suivant</span>
+        </a>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      </div>
+    </div>
+  </div>
+</div>
 
 
     <?php include("serveur/src/components/footerIndex.php"); ?>

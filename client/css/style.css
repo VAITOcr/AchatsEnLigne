@@ -80,6 +80,47 @@
   border-top: 3px solid #d10024;
 }
 
+.carouselIndex {
+  margin-top: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+  position: relative;
+  border-color: #cf1616 !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+}
+
+.carousel-control {
+  background-color: transparent !important;
+  background-image: none !important;
+  color: #050505;
+  opacity: 1 !important;
+}
+.carousel-control:hover {
+  background-color: transparent !important;
+  color: #be1534 !important;
+}
+
+.carousel-control:focus,
+.carousel-control:active {
+  outline: none !important;
+  background-color: transparent !important;
+  color: #030303 !important;
+}
+
+.custom-cardIndex {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 30px;
+  margin: 30px auto;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
 .main-nav > li + li {
   margin-left: 30px;
 }

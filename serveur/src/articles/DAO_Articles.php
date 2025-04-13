@@ -48,8 +48,10 @@ class DAO_Articles{
 
     //ajouter un article
     public function addArticle(Article $article){
+        
         // Connexion à la base de données
         $connexion = Connexion::getConnexion();
+
         // Préparation de la requête SQL
         $stmt = $connexion->prepare("INSERT INTO articles (id, name, description, price) VALUES (:id, :name, :description, :price)");
         // Exécuter la requête SQL
