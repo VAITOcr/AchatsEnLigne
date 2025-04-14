@@ -16,11 +16,18 @@ if (isset($_GET['msg'])){
     <link type="text/css" rel="stylesheet" href="client/utilitaires/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="client/utilitaires/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="client/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="client/css/nouislider.min.css"/>
+    <link rel="stylesheet" type="text/css" href="client/utilitaires/css/slick.css"/>
+<link rel="stylesheet" type="text/css" href="client/utilitaires/css/slick-theme.css"/>
+
     
     <script src="client/utilitaires/jquery-3.7.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="client/js/global.js"></script>
     <script src="client/js/requetes.js"></script>
+    <script src="client/js/slick.min.js"></script>
+    <script src="client/js/nouislider.min.js"></script>
+
 </head>
 <body>
     <?php include("serveur/src/components/headerIndex.php"); ?>
@@ -83,6 +90,86 @@ if (isset($_GET['msg'])){
     </div>
   </div>
 </div>
+
+<div class="container">
+	<!-- SECTION -->
+	<div class="section">
+		<!-- conteneur -->
+		<div class="container">
+			<!-- ligne -->
+			<div class="row">
+
+				<!-- titre de la section -->
+				<div class="col-md-12">
+					<div class="section-title">
+						<h3 class="title">Nouveaux produits</h3>
+						<div class="section-nav">
+							<ul class="section-tab-nav tab-nav">
+								<li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
+								<li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
+								<li><a data-toggle="tab" href="#tab1">Cameras</a></li>
+								<li><a data-toggle="tab" href="#tab1">Accessories</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /titre de la section -->
+
+				<!-- Onglets produits + slick -->
+				<div class="col-md-12">
+					<div class="row">
+						<div class="products-tabs">
+							<!-- onglet -->
+							<div id="tab1" class="tab-pane active">
+								<div class="products-slick" data-nav="#slick-nav-1">
+
+									<!-- produit -->
+									<div class="product">
+										<div class="product-img">
+											<img src="serveur/photos/product04.png" alt="">
+										</div>
+										<div class="product-body">
+											<ri class="product-category">CATEGORIE VA ICI</p>
+											<h3 class="product-name"><a href="#">Nom du produit</a></h3>
+											<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+											<div class="product-rating">
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+												<i class="fa fa-star"></i>
+											</div>
+											<div class="product-btns">
+												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
+											</div>
+										</div>
+										<div class="add-to-cart">
+											<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+										</div>
+									</div>
+									<!-- /produit -->
+
+									<!-- Ajoute ici d'autres produits... -->
+
+								</div>
+								<div id="slick-nav-1" class="products-slick-nav"></div>
+							</div>
+							<!-- /onglet -->
+						</div>
+					</div>
+				</div>
+				<!-- /Onglets produits + slick -->
+			</div>
+			<!-- /ligne -->
+		</div>
+		<!-- /conteneur -->
+	</div>
+	<!-- /SECTION -->
+</div>
+
+         
+
+        
 
 
     <?php include("serveur/src/components/footerIndex.php"); ?>
