@@ -2,39 +2,79 @@
 
 ?>
 
-<footer class="py-3 bg-dark footer" id="contact">
-        <div class="container">
-            <div class="row">
-                <!-- Texte de copyright aligné à gauche -->
-                <div class="col-md-4 text-md-start text-center">
-                    <p class="text-white m-0">
-                        Copyright &copy; APVinc 2025. Tous droits réservés.  
-                    </p>
-                    <p class="text-white m-0">
-                        Toute reproduction, distribution ou modification sans autorisation préalable est strictement interdite.
-                    </p>
-                </div>
+		<footer id="footer">
+			
+			<div class="section">
+				
+				<div class="containerFooter">
+					
+					<div class="row">
+						<div class="col-md-3 col-sm-6 ">
+							<div class="footer">
+								<h3 class="footer-title">About Us</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut.</p>
+								<ul class="footer-links">
+									<li><a href="#"><i class="fa fa-map-marker"></i>1734 Stonecoal Road</a></li>
+									<li><a href="#"><i class="fa fa-phone"></i>+021-95-51-84</a></li>
+									<li><a href="#"><i class="fa fa-envelope-o"></i>email@email.com</a></li>
+								</ul>
+							</div>
+						</div>
 
-                <!-- Contact au centre -->
-                <div class="col-md-4 text-md-center text-center">
-                    <p class="text-white m-0">Contactez-nous :</p>
-                    <p class="text-white m-0">contact@apvinc.com</p>
-                    <p class="text-white m-0">+1 514 514 5142</p>
-                </div>
+						<div class="clearfix visible-xs"></div>
 
-                <!-- Réseaux sociaux à droite -->
-                <div class="col-md-4 text-md-end text-center">
-                    <p class="text-white m-0">Suivez-nous :</p>
-                    <a href="#" class="me-2">
-                        <img src="client/images/facebook.png" alt="Facebook" width="40" >
-                    </a>
-                    <a href="#" class="me-2">
-                        <img src="client/images/twitter.png" alt="Twitter" width="40" >
-                    </a>
-                    <a href="#">
-                        <img src="client/images/linkedin.png" alt="LinkedIn" width="40" >
-                    </a>
-                </div>
-            </div>
-        </div>
-    </footer>
+						<div class="col-md-3 col-sm-6">
+							<div class="footer">
+								<h3 class="footer-title">Information</h3>
+								<ul class="footer-links">
+									<li><a href="#">About Us</a></li>
+									<li><a href="#">Contact Us</a></li>
+									<li><a href="#">Privacy Policy</a></li>
+									<li><a href="#">Orders and Returns</a></li>
+									<li><a href="#">Terms & Conditions</a></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="col-md-3 col-sm-6">
+							<div class="footer">
+								<h3 class="footer-title">Service</h3>
+								<ul class="footer-links">
+									<li><a href="#">My Account</a></li>
+									<li><a href="#">View Cart</a></li>
+									<li><a href="#">Wishlist</a></li>
+									<li><a href="#">Track My Order</a></li>
+									<li><a href="#">Help</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				
+				</div>
+				
+			</div>
+			
+
+			
+			<div id="bottom-footer" class="section">
+				<div class="container">
+					
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<ul class="footer-payments">
+								<li><a href="#"><i class="fa fa-cc-visa"></i></a></li>
+								<li><a href="#"><i class="fa fa-credit-card"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-paypal"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-mastercard"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-discover"></i></a></li>
+								<li><a href="#"><i class="fa fa-cc-amex"></i></a></li>
+							</ul>
+						</div>
+					</div>
+						
+				</div>
+				
+			</div>
+			
+		</footer>
+		
