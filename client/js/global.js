@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  // Appel de la fonction pour charger les articles
+  getArticles();
   // Pour quand on clique sur un bouton du carrousel
   $(".carousel-control").on("mouseup", function () {
     $(this).blur();
@@ -34,3 +36,11 @@ $(document).ready(function () {
     });
   });
 });
+
+function getArticles() {
+  fetch("http://localhost/Projet/routesArticles.php?action=getAllArticles")
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+    });
+}
