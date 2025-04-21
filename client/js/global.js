@@ -37,10 +37,13 @@ $(document).ready(function () {
   });
 });
 
-function getArticles() {
-  fetch("http://localhost/Projet/routesArticles.php?action=getAllArticles")
-    .then((response) => response.json())
-    .then((data) => {
-      console.log(data);
-    });
+async function getArticles() {
+  const response = await fetch(
+    "/Projet/routesArticles.php?action=getAllArticles",
+    {
+      method: "GET",
+    }
+  );
+  const data = await response.json();
+  console.log(data);
 }

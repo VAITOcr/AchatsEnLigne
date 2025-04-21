@@ -24,7 +24,9 @@ CREATE TABLE articles(
 	name VARCHAR(30) NOT NULL,
 	description TEXT NOT NULL,
 	price FLOAT NOT NULL,
-	photo VARCHAR(127) NOT NULL
+	photo VARCHAR(127) NOT NULL,
+	featured CHAR(1) DEFAULT 'N',
+	rating INT MAX(5) DEFAULT 0
 );
 
 
