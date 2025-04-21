@@ -1,5 +1,19 @@
 let allArticles = [];
 
+document.addEventListener("DOMContentLoaded", () => {
+  const links = document.querySelectorAll(".tab-link");
+
+  links.forEach((link) => {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      const category = link.getAttribute("data-category");
+      filterArticlesByCategory(category);
+      links.forEach((l) => l.parentElement.classList.remove("active"));
+      link.parentElement.classList.add("active");
+    });
+  });
+});
+
 export async function getArticles() {
   const response = await fetch(
     "/Projet/routesArticles.php?action=getAllArticles"

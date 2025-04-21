@@ -76,10 +76,13 @@ if (isset($_GET['msg'])){
 						<h3 class="title">Nouveaux produits</h3>
 						<div class="section-nav">
 							<ul class="section-tab-nav tab-nav">
-								<li class="active"><a data-toggle="tab" href="#tab1" onclick="filterArticlesByCategory('Tous')">Tous</a></li>
-								<li><a data-toggle="tab" href="#tab2" onclick="filterArticlesByCategory('Smartphone')">Smartphones</a></li>
-								<li><a data-toggle="tab" href="#tab3" onclick="filterArticlesByCategory('Laptop')">Laptops</a></li>
-								<li><a data-toggle="tab" href="#tab4" onclick="filterArticlesByCategory('Autres')">Autres</a></li>
+								<li class="active">
+                                <a class="tab-link" data-category="Tous" href="#">Tous</a></li>
+								<li>
+                                <a class="tab-link" data-category="Smartphone" href="#">Smartphones</a></li>
+								<li>
+                                    <a class="tab-link" data-category="Laptop" href="#">Laptops</a></li>
+								<li><a class="tab-link" data-category="Autres" href="#">Autres</a></li>
 							</ul>
 						</div>
 					</div>
