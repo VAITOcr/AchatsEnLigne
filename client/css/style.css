@@ -187,34 +187,72 @@ body {
   color: white;
 }
 
-#idFormEnreg,
-#idFormConnexion {
+.modal-content {
+  background-color: #15161d !important;
+  overflow: hidden !important;
+  color: #f1f1f1 !important;
+  border-radius: 15px !important;
+  border: 2px solid #d10024 !important;
+  font-size: 16px !important;
 }
 
-.modal-header {
-  background-color: rgb(219, 218, 198);
-  color: white;
+.modal-header,
+.modal-footer {
+  background-color: #1e1f29 !important;
+  border-color: #d10024 !important;
+  color: white !important;
 }
+
+.modal-header,
+.modal-body,
+.modal-footer {
+  border-radius: 0 !important;
+}
+
+.modal-title {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+}
+
 .modal-body {
-  margin: 0px;
+  background-color: #15161d !important;
 }
 
-.btn-bottom-perso {
-  margin-top: 7px;
-  margin-bottom: 7px;
-}
-.modal {
-  padding: 0px;
-  margin: 0px;
-}
-
-.modal.fade .modal-dialog {
-  transform: scale(0.8);
-  transition: transform 0.3s ease-out;
+.modal-body input,
+.modal-body select {
+  background-color: #1e1f29 !important;
+  color: #f1f1f1 !important;
+  border: 1px solid #444 !important;
+  font-size: 15px !important;
 }
 
-.modal.show .modal-dialog {
-  transform: scale(1);
+.modal-body input:focus,
+.modal-body select:focus {
+  border-color: #d10024 !important;
+  box-shadow: 0 0 5px #d10024 !important;
+}
+
+/* Botones */
+.btn-primary {
+  background-color: #d10024 !important;
+  border-color: #d10024 !important;
+  color: white !important;
+}
+
+.btn-primary:hover {
+  background-color: #a4001a !important;
+  border-color: #a4001a !important;
+}
+
+.btn-secondary {
+  background-color: #333 !important;
+  border-color: #444 !important;
+  color: #fff !important;
+}
+
+.btn-secondary:hover {
+  background-color: #555 !important;
+  border-color: #666 !important;
 }
 
 .title-box {

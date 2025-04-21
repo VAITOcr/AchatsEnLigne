@@ -14,8 +14,8 @@
 						<li><a href="#"><i class="fa fa-map-marker"></i> 222 rue des bois</a></li>
 					</ul>
 					<ul class="header-links pull-right">
-						<li><a href=""><i class="fa fa-user-o"></i> Connexion</a></li>
-                        <li><a href="*"><i class="fa fa-user-plus"></i> Inscription</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#idConnexion"><i class="fa fa-user-o"></i> Connexion</a></li>
+                        <li><a href="#" data-toggle="modal" data-target="#idEnreg"><i class="fa fa-user-plus"></i> Inscription</a></li>
 					</ul>
 				</div>
 			</div>
