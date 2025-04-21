@@ -23,7 +23,7 @@ if (isset($_GET['msg'])){
     
     <script src="client/utilitaires/jquery-3.7.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script src="client/js/global.js"></script>
+    <script type="module" src="client/js/global.js"></script>
     <script src="client/js/requetes.js"></script>
     <script src="client/js/slick.min.js"></script>
     <script src="client/js/nouislider.min.js"></script>
@@ -41,39 +41,10 @@ if (isset($_GET['msg'])){
             <div class="row">
                 <div class="col-md-12 ">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="7000">
-        
-                    <!-- Indicateurs -->
-                    <ol class="carousel-indicators">
-                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                    </ol>
+    
 
                         <!-- Slides -->
                         <div class="carousel-inner" role="listbox">
-                        <div class="item active">
-                            <div class="custom-cardIndex text-center">
-                            <h3>Produit 1</h3>
-                            <p>Une description  pour le produit 1.</p>
-                            <a href="#" class="btn btn-primary">Acheter</a>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="custom-cardIndex text-center">
-                            <h3>Produit 2</h3>
-                            <p>Quelques infos sur le produit 2.</p>
-                            <a href="#" class="btn btn-success">Voir plus</a>
-                            </div>
-                        </div>
-
-                        <div class="item">
-                            <div class="custom-cardIndex text-center">
-                            <h3>Produit 3</h3>
-                            <p>Description du produit 3 avec une action.</p>
-                            <a href="#" class="btn btn-warning">Découvrir</a>
-                            </div>
-                        </div>
                         </div>
 
         <!-- Controls -->
@@ -105,10 +76,10 @@ if (isset($_GET['msg'])){
 						<h3 class="title">Nouveaux produits</h3>
 						<div class="section-nav">
 							<ul class="section-tab-nav tab-nav">
-								<li class="active"><a data-toggle="tab" href="#tab1">Laptops</a></li>
-								<li><a data-toggle="tab" href="#tab1">Smartphones</a></li>
-								<li><a data-toggle="tab" href="#tab1">Cameras</a></li>
-								<li><a data-toggle="tab" href="#tab1">Accessories</a></li>
+								<li class="active"><a data-toggle="tab" href="#tab1" onclick="filterArticlesByCategory('Tous')">Tous</a></li>
+								<li><a data-toggle="tab" href="#tab2" onclick="filterArticlesByCategory('Smartphone')">Smartphones</a></li>
+								<li><a data-toggle="tab" href="#tab3" onclick="filterArticlesByCategory('Laptop')">Laptops</a></li>
+								<li><a data-toggle="tab" href="#tab4" onclick="filterArticlesByCategory('Autres')">Autres</a></li>
 							</ul>
 						</div>
 					</div>
@@ -121,35 +92,8 @@ if (isset($_GET['msg'])){
 						<div class="products-tabs">
 							<!-- onglet -->
 							<div id="tab1" class="tab-pane active">
-								<div class="products-slick" data-nav="#slick-nav-1">
+								<div class="products-slick " data-nav="#slick-nav-1">
 
-									<!-- produit -->
-									<div class="product">
-										<div class="product-img">
-											<img src="serveur/photos/product04.png" alt="">
-										</div>
-										<div class="product-body">
-											<ri class="product-category">CATEGORIE VA ICI</p>
-											<h3 class="product-name"><a href="#">Nom du produit</a></h3>
-											<h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
-											<div class="product-rating">
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-												<i class="fa fa-star"></i>
-											</div>
-											<div class="product-btns">
-												<button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">quick view</span></button>
-											</div>
-										</div>
-										<div class="add-to-cart">
-											<button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
-										</div>
-									</div>
-									<!-- /produit -->
-
-									<!-- Ajoute ici d'autres produits... -->
 
 								</div>
 								<div id="slick-nav-1" class="products-slick-nav"></div>
