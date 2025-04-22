@@ -23,6 +23,10 @@ class Connexion {
             $options = array(
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
             );
+            $options=[
+                PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+                PDO::ATTR_EMULATE_PREPARES => false
+            ];
             self::$connexion = new PDO($dns, USAGER, PASS, $options);
         } catch (Exception $e) {
             echo $e->getMessage();

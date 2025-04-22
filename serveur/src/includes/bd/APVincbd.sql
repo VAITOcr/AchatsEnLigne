@@ -11,7 +11,7 @@ CREATE  TABLE membres(
 );
 
 CREATE TABLE connexion(
-	idm int,
+	idm int PRIMARY KEY,
 	courriel VARCHAR(256) NOT NULL,
 	pass VARCHAR(255) NOT NULL,
 	role CHAR(1) NOT NULL, 
