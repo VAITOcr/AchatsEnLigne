@@ -7,7 +7,7 @@
 					<!-- NAV -->
 					<ul class="main-nav nav navbar-nav">
 						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#">Ma compte</a></li>
+						<li><a href="#" data-toggle="modal" data-target="#idConnexion">Ma compte</a></li>
 						
 					</ul>
 					<!-- /NAV -->

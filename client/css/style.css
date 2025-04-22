@@ -89,6 +89,8 @@ body {
 .carouselIndex {
   margin-top: 10px;
   border-radius: 10px;
+  width: 100%;
+  max-width: 1000px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background-color: #fff;
@@ -437,10 +439,10 @@ html {
 
 .product {
   position: relative;
-  max-width: 200px;
+  max-width: 220px;
   margin: 15px 0px;
-  -webkit-box-shadow: 0px 0px 0px 0px #e4e7ed, 0px 0px 0px 1px #e4e7ed;
-  box-shadow: 0px 0px 0px 0px #e4e7ed, 0px 0px 0px 1px #e4e7ed;
+  -webkit-box-shadow: 0px 0px 0px 0px #e4e7ed, 0px 0px 0px 2px #e4e7ed;
+  box-shadow: 0px 0px 0px 0px #e4e7ed, 0px 0px 0px 2px #e4e7ed;
   -webkit-transition: 0.2s all;
   transition: 0.2s all;
 }
@@ -451,6 +453,7 @@ html {
 }
 
 .product .product-img {
+  margin: 15px 10px 10px;
   position: relative;
 }
 
