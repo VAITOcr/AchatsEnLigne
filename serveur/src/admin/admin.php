@@ -16,29 +16,29 @@ if (isset($_SESSION['derniere_activite'])) {
     }
 }
 
+$_SESSION['derniere_activite'] = time(); // Mettre à jour le temps de la dernière activité
+
 // Vérification de la session
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['idm'])) {
     // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
     header("Location: index.php?msg=Vous devez vous connecter pour accéder à cette page.");
     exit();
-} elseif ($_SESSION['role'] !== 'admin') {
+}
+
+// Vérification du rôle de l'utilisateur
+if ($_SESSION['role'] !== 'A') {
     // Rediriger vers la page d'accueil si l'utilisateur n'est pas un administrateur
     header("Location: index.php?msg=Vous n'avez pas accès à cette page.");
     exit();
 }
 
-if (isset($_SESSION['verif_agent'])) {
-    if ($_SESSION['verif_agent'] !== $_SERVER['HTTP_USER_AGENT']) {
-        // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
-        session_unset(); // Libérer toutes les variables de session
-        session_destroy(); // Détruire la session
-        header("Location: index.php?msg=Vous devez vous connecter pour accéder à cette page.");
-        exit();
-    }
-} else {
-    $_SESSION['verif_agent'] = $_SERVER['HTTP_USER_AGENT'];
+// Vérification de l'agent utilisateur
+if (!isset($_SESSION['agent']) || $_SESSION['agent'] !== $_SERVER['HTTP_USER_AGENT']) {
+    session_unset();
+    session_destroy();
+    header("Location: index.php?msg=" . urlencode("Vous devez vous connecter pour accéder à cette page."));
+    exit();
 }
-    
 
 ?>
 

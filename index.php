@@ -4,6 +4,24 @@ $msg="";
 if (isset($_GET['msg'])){
     $msg= $_GET['msg'];
 }
+
+if (isset($_SESSION['idm'], $_SESSION['role'])) {
+    if ($_SESSION['role'] == 'A') {
+        header('Location: serveur/src/admin/admin.php');
+        exit();
+    } elseif ($_SESSION['role'] == 'M') {
+        header('Location: serveur/src/membre/membre.php');
+        exit();
+    }
+}
+
+if (!isset($_SESSION['agent']) || $_SESSION['agent'] !== $_SERVER['HTTP_USER_AGENT']) {
+    session_unset();
+    session_destroy();
+    header('Location: index.php?msg=' . urlencode("Session invalide"));
+    exit();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
