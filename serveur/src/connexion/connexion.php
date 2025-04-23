@@ -4,6 +4,7 @@ declare(strict_types=1); // Enforce strict types
 
 require_once(__DIR__.'/../includes/env/env_vars.inc.php');
 
+
 class Connexion {
     private static $connexion = null;
 
@@ -34,5 +35,7 @@ class Connexion {
             exit();
         }
     }
+
+    
 }
 ?>

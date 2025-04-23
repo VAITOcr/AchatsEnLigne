@@ -14,7 +14,7 @@
           <h4 class="modal-title" id="ModalEnregLabel">Enregistrer membre</h4>
         </div>
         <div class="modal-body">
-          <form id="idFormEnreg" action="serveur/src/controleurs/controleurMembre.php" method="POST"
+          <form id="idFormEnreg" action="serveur/src/handler/membreHandler.php" method="POST"
                 enctype="multipart/form-data" class="row" onSubmit="return validerFormEnreg();" autocomplete="off">
             <div class="form-group col-md-6">
               <label for="prenom">Prénom</label>
@@ -76,7 +76,7 @@
           <h4 class="modal-title" id="ModalConnexionLabel">Connexion</h4>
         </div>
         <div class="modal-body">
-          <form class="row" id="idFormConnexion" action="serveur/src/connexion/connexion.php" method="POST" autocomplete="off">
+          <form class="row" id="idFormConnexion" action="serveur/src/handler/connexionUserHandler.php" method="POST" autocomplete="off">
             <div class="form-group col-md-12">
               <label for="courrielco">Courriel</label>
               <input type="email" class="form-control" id="courrielco" name="courrielco" required>

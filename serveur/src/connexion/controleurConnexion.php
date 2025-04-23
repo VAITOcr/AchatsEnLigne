@@ -26,9 +26,9 @@ class ControleurConnexion {
             $_SESSION['prenom'] = $resultat['data']['prenom'];
             
             if ($_SESSION['role'] == 'A') {
-                header('Location: ../admin/admin.html');
+                header('Location: ../admin/admin.php');
             } else {
-                header('Location: ../membre/membre.html');
+                header('Location: ../membre/membre.php');
             }
         } else {
             header('Location: ../../../index.html?msg=' . urlencode($resultat['message']));
