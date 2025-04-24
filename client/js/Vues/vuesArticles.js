@@ -131,10 +131,9 @@ export function articlesFeatured(allArticles) {
 
     item.innerHTML = `
       <div class="custom-cardIndex text-center">
-       <img class="img-fluid rounded" style="width: 200px; height: 200px;" src="${
-         window.serveurUrl
-       }photos/${article.photo}" alt="${article.name}">
-       }" alt="${article.name}">
+        <img class="img-fluid rounded" style="width: 200px; height: 200px;" src="${
+          window.serveurUrl
+        }photos/${article.photo}" alt="${article.name}">
         <h3>${article.name}</h3>
         <p>${article.description.slice(0, 500)}...</p>
         <a href="#" class="btn btn-primary">Voir</a>
