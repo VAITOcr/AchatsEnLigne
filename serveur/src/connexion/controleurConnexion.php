@@ -1,9 +1,14 @@
 <?php
 declare(strict_types=1);
 require_once(__DIR__.'/DAO-Connexion.php');
+require_once(__DIR__ . '/../config_paths.php');
+
+
+
 
 class ControleurConnexion {
     private $daoConnexion;
+    private $serveurUrl;
 
     public function __construct() {
         $this->daoConnexion = new DAO_Connexion();
@@ -26,9 +31,9 @@ class ControleurConnexion {
             $_SESSION['prenom'] = $resultat['data']['prenom'];
             
             if ($_SESSION['role'] == 'A') {
-                header('Location: ../admin/admin.php');
+                header('Location:' . $this->serveurUrl . 'src/admin/admin.php');
             } else {
-                header('Location: ../membre/membre.php');
+                header('Location:' . $this->serveurUrl . 'src/membre/membre.php');
             }
         } else {
             header('Location: ../../../index.php?msg=' . urlencode($resultat['message']));

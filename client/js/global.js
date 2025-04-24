@@ -2,15 +2,44 @@ import {
   getArticles,
   renderArticles,
   filterArticlesByCategory,
+  chercherHeaderArticles,
 } from "./Vues/vuesArticles.js";
 
 $(document).ready(function () {
   // Appel de la fonction pour charger les articles
   getArticles();
+  //appel de la fonction pour charger les articles cherches dans le header
+  chercherHeaderArticles();
   // Pour quand on clique sur un bouton du carrousel
   $(".carousel-control").on("mouseup", function () {
     $(this).blur();
   });
 });
-
+$(".products-slick").slick({
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  infinite: true,
+  arrows: true,
+  dots: false,
+  responsive: [
+    {
+      breakpoint: 1200,
+      settings: {
+        slidesToShow: 3,
+      },
+    },
+    {
+      breakpoint: 992,
+      settings: {
+        slidesToShow: 2,
+      },
+    },
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+});
 window.filterArticlesByCategory = filterArticlesByCategory;

@@ -1,5 +1,5 @@
 <?php
-
+include_once __DIR__ . '/../config_paths.php';
 ?>
 
 <!-- Header-->
@@ -16,6 +16,7 @@
 					<ul class="header-links pull-right">
 						<li><a href="#" data-toggle="modal" data-target="#idConnexion"><i class="fa fa-user-o"></i> Connexion</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#idEnreg"><i class="fa fa-user-plus"></i> Inscription</a></li>
+						<li><a href="<?= $serveurUrl ?>src/connexion/deconnecter.php"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 					</ul>
 				</div>
 			</div>
@@ -29,14 +30,14 @@
 						<div class="col-md-3">
 							<div class="header-logo">
 								<a href="#" class="logo">
-									<img src="client/images/logoNew.png" alt="">
+									<img src="<?= $clientUrl ?>images/logoNew.png" alt="">
 								</a>
 							</div>
 						</div>
                         <div class="col-md-6">
 							<div class="header-search">
-								<form>
-									<input class="input" placeholder="Rechercher ici">
+								<form id="search-form">
+									<input id="search-input" class="input" placeholder="Rechercher ici">
 									<button class="search-btn">Chercher</button>
 								</form>
 							</div>

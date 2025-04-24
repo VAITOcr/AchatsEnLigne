@@ -21,10 +21,10 @@
         if($infosConnexion->statut == 'A') { // A-Admin. Est-ce que le statut du membre membre est A-Actif
             // Le reste : vérifier su role est A ou M
             if($infosConnexion->role == 'A') { // Est-ce un Admin ?
-                header('Location: ../admin/admin.html');
+                header('Location: ../admin/admin.php');
                 exit();
             } else if($infosConnexion->role == 'M') { // Est-ce un Membre ?                   
-                        header('Location: ../membre/membre.html');
+                        header('Location: ../membre/membre.php');
                         exit();
                     } else {
                         // Éventuellement pour d'autres catégories
@@ -36,6 +36,6 @@
     }
     // urlencode() garantit que $msg est transmis sans erreur, 
     // surtout s’il contient des caractères spéciaux ou des espaces.
-    header('Location:  ../../../index.html?msg='.urlencode($msg));
+    header('Location:  ../../../index.php?msg='.urlencode($msg));
     exit();
 ?>

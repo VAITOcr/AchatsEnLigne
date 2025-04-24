@@ -44,10 +44,27 @@ export function renderArticles(articles) {
       starsHTML += `<i class="fa fa-star"></i>`;
     }
 
+    let addToCartHTML = "";
+    if (window.utilisateurRole === "M") {
+      addToCartHTML = `
+        <div class="add-to-cart">
+          <button class="add-to-cart-btn">
+            <i class="fa fa-shopping-cart"></i> add to cart
+          </button>
+        </div>`;
+    } else {
+      addToCartHTML = `
+        <div class="add-to-cart">
+          <button class="add-to-cart-btn" disabled style="cursor: not-allowed; opacity: 0.5;" title="Connectez-vous en tant que membre pour ajouter au panier">
+            <i class="fa fa-shopping-cart"></i> add to cart
+          </button>
+        </div>`;
+    }
+
     articleElement.innerHTML = `
       <div class="product p-3 m-2 shadow-sm">
         <div class="product-img">
-          <img class="img-fluid rounded" style="width: 200px; height: 200px;" src="serveur/photos/${article.photo}" alt="${article.name}">
+          <img class="img-fluid rounded" style="width: 200px; height: 200px;" src="${window.serveurUrl}photos/${article.photo}" alt="${article.name}">
         </div>
         <div class="product-body">
           <h3 class="product-name"><a href="#">${article.name}</a></h3>
@@ -61,11 +78,7 @@ export function renderArticles(articles) {
             </button>
           </div>
         </div>
-        <div class="add-to-cart">
-          <button class="add-to-cart-btn">
-            <i class="fa fa-shopping-cart"></i> add to cart
-          </button>
-        </div>
+        ${addToCartHTML}
       </div>
     `;
 
@@ -118,8 +131,9 @@ export function articlesFeatured(allArticles) {
 
     item.innerHTML = `
       <div class="custom-cardIndex text-center">
-       <img class="img-fluid rounded" style="width: 200px; height: 200px;" src="serveur/photos/${
-         article.photo
+       <img class="img-fluid rounded" style="width: 200px; height: 200px;" src="${
+         window.serveurUrl
+       }photos/${article.photo}" alt="${article.name}">
        }" alt="${article.name}">
         <h3>${article.name}</h3>
         <p>${article.description.slice(0, 500)}...</p>
@@ -128,5 +142,34 @@ export function articlesFeatured(allArticles) {
     `;
 
     carouselInner.appendChild(item);
+  });
+}
+
+export function chercherHeaderArticles() {
+  const input = document.querySelector("#search-input");
+  const form = document.querySelector("#search-form");
+
+  input.addEventListener("input", (event) => {
+    const query = input.value.trim().toLowerCase();
+
+    if (query.length >= 2) {
+      fetch(
+        "serveur/src/articles/rechercherProduit.php?q=" +
+          encodeURIComponent(query)
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          renderArticles(data);
+        })
+        .catch((error) => {
+          console.error("Erreur lors de la recherche d'articles :", error);
+        });
+    } else {
+      renderArticles(allArticles);
+    }
+  });
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
   });
 }
