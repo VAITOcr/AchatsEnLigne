@@ -1,14 +1,27 @@
 <?php
-define('SECURE_ACCESS', true); // Définit une constante pour vérifier l'accès sécurisé
+define('SECURE_ACCESS', true); 
 
-// si l'utilisateur n'est pas connecté envoyer un msg d'erreur
-if (!isset($_SESSION['user'])) {
-    header("Location: ../../../index.php?msg=Vous devez être connecté pour vous déconnecter.");
+session_start(); 
+
+if (!isset($_SESSION['idm'])) {
+    header("Location: ../../../index.php?msg=" . urlencode("Vous devez être connecté pour vous déconnecter."));
     exit();
 }
-session_start();
-session_unset(); // Libérer toutes les variables de session
-session_destroy(); // Destruire la session
-header("Location: ../../../index.php ?msg=Vous avez été déconnecté avec succès.");
+
+
+$_SESSION = [];
+
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+session_destroy();
+
+
+header("Location: ../../../index.php?msg=" . urlencode("Vous avez été déconnecté avec succès."));
 exit();
 ?>
