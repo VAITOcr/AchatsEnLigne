@@ -10,6 +10,7 @@ $(document).ready(function () {
   getArticles();
   //appel de la fonction pour charger les articles cherches dans le header
   chercherHeaderArticles();
+  toggleLogoutButton();
   // Pour quand on clique sur un bouton du carrousel
   $(".carousel-control").on("mouseup", function () {
     $(this).blur();
@@ -46,8 +47,11 @@ $(".products-slick").slick({
 //fonction pour habiliter ou deshabiliter le bouton de deconnexion
 function toggleLogoutButton() {
   const logoutButton = document.getElementById("logout-button");
-  if (!window.utilisateurRole === "M" || !window.utilisateurRole === "A") {
-    logoutButton.style.display = "";
+
+  if (window.utilisateurRole === "M" || window.utilisateurRole === "A") {
+    logoutButton.style.display = "inline-block"; // ou "block" selon ton layout
+  } else {
+    logoutButton.style.display = "none";
   }
 }
 
