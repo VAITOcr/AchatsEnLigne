@@ -1,13 +1,18 @@
 <?php
 session_start();
 define('SECURE_ACCESS', true); // Définir une constante pour sécuriser l'accès
+require_once(__DIR__ . '/../config_paths.php');
 
 $msg="";
 if (isset($_GET['msg'])){
     $msg= $_GET['msg'];
 }
-
-require_once(__DIR__ . "/../config_paths.php");
+// Redirection vers la page d'accueil si nest pas connecté
+if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] !== $_SERVER['HTTP_USER_AGENT']) {
+    session_destroy(); 
+    header('Location: ../../../index.php?msg=' . urlencode("Session invalide."));
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -32,10 +37,10 @@ require_once(__DIR__ . "/../config_paths.php");
   <script src="<?= $clientUrl ?>js/nouislider.min.js"></script>
 </head>
   <body>
-    <?php include(__DIR__ . "/../components/headerIndex.php"); ?>
+    <?php include($serveurPath . "src/components/headerIndex.php"); ?>
 
     <nav id="navigation">
-      <?php include(__DIR__ . "/../components/navBarIndex.php"); ?>
+      <?php include($serveurPath . "src/components/navBarIndex.php"); ?>
     </nav>
 
     <div class="container-fluid carouselIndex">
@@ -90,7 +95,7 @@ require_once(__DIR__ . "/../config_paths.php");
             <!-- titre de la section -->
             <div class="col-md-12">
               <div class="section-title">
-                <h3 class="title">Nouveaux produits</h3>
+                <h3 class="title">Nouveaux produits MEMBRE</h3>
                 <div class="section-nav">
                   <ul class="section-tab-nav tab-nav">
                     <li class="active">
@@ -139,8 +144,8 @@ require_once(__DIR__ . "/../config_paths.php");
       <!-- /SECTION -->
     </div>
 
-    <?php include(__DIR__ . "/../components/footerIndex.php"); ?>
-    <?php include(__DIR__ . "/../components/modales.php") ?>
+    <?php include($serveurPath . "src/components/footerIndex.php"); ?>
+    <?php include($serveurPath . "src/components/modales.php"); ?>
 
     <?php if (!empty($msg)): ?>
     <div

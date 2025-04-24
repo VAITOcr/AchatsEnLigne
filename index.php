@@ -37,7 +37,7 @@ if (isset($_SESSION['idm'], $_SESSION['role'])) {
     
     <script src="client/utilitaires/jquery-3.7.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script type="module" src="client/js/global.js"></script>
+    <script type="module" src="<?= $clientUrl ?>js/global.js"></script>
     <script src="client/js/requetes.js"></script>
     <script src="client/js/slick.min.js"></script>
     <script src="client/js/nouislider.min.js"></script>

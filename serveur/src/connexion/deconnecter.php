@@ -1,4 +1,5 @@
 <?php
+define('SECURE_ACCESS', true); // Définit une constante pour vérifier l'accès sécurisé
 
 // si l'utilisateur n'est pas connecté envoyer un msg d'erreur
 if (!isset($_SESSION['user'])) {

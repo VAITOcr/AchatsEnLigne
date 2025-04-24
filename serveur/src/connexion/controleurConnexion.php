@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+define('SECURE_ACCESS', true); // Définit une constante pour vérifier l'accès sécurisé
 require_once(__DIR__.'/DAO-Connexion.php');
 require_once(__DIR__ . '/../config_paths.php');
 
@@ -10,8 +11,9 @@ class ControleurConnexion {
     private $daoConnexion;
     private $serveurUrl;
 
-    public function __construct() {
+    public function __construct( string $serveurUrl) {
         $this->daoConnexion = new DAO_Connexion();
+        $this->serveurUrl = $serveurUrl;
     }
 
     public function verifierConnexion(string $courriel, string $mdp): array {

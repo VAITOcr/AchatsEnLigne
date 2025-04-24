@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 export async function getArticles() {
   const response = await fetch(
-    "/Projet/routesArticles.php?action=getAllArticles"
+    window.serveurUrl +
+      "serveur/src/articles/listerArticles.php?role=" +
+      window.utilisateurRole
   );
   const data = await response.json();
 
@@ -153,7 +155,8 @@ export function chercherHeaderArticles() {
 
     if (query.length >= 2) {
       fetch(
-        "serveur/src/articles/rechercherProduit.php?q=" +
+        window.serveurUrl +
+          "serveur/src/articles/listerArticles.php?role=" +
           encodeURIComponent(query)
       )
         .then((response) => response.json())
