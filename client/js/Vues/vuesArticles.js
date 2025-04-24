@@ -16,9 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 export async function getArticles() {
   const response = await fetch(
-    window.serveurUrl +
-      "serveur/src/articles/listerArticles.php?role=" +
-      window.utilisateurRole
+    window.serveurUrl + "../routesArticles.php?action=getAllArticles"
   );
   const data = await response.json();
 
@@ -154,20 +152,25 @@ export function chercherHeaderArticles() {
     const query = input.value.trim().toLowerCase();
 
     if (query.length >= 2) {
-      fetch(
-        window.serveurUrl +
-          "serveur/src/articles/listerArticles.php?role=" +
-          encodeURIComponent(query)
-      )
+      fetch(window.serveurUrl + "../routesArticles.php?action=getAllArticles")
         .then((response) => response.json())
         .then((data) => {
-          renderArticles(data);
+          if (Array.isArray(data.donnees)) {
+            const resultatsFiltres = data.donnees.filter(
+              (article) =>
+                article.name.toLowerCase().includes(query) ||
+                article.categorie.toLowerCase().includes(query)
+            );
+            renderArticles(resultatsFiltres);
+          } else {
+            console.error("Erreur lors de la recherche d'articles :", data);
+          }
         })
         .catch((error) => {
           console.error("Erreur lors de la recherche d'articles :", error);
         });
     } else {
-      renderArticles(allArticles);
+      renderArticles(allArticles); // Remet tous les articles si input vide
     }
   });
 

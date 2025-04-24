@@ -3,7 +3,7 @@ let listeDesArticles;
 const reqListeDesArticles = async () => {
   try {
     const response = await fetch(
-      window.serveurUrl + "serveur/src/articles/listerArticles.php"
+      window.serveurUrl + "../routesArticles.php?action=getAllArticles"
     );
     const data = await response.json();
     listeDesArticles = data;
