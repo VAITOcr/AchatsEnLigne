@@ -1,6 +1,12 @@
 <?php
-$clientPath = $_SERVER['DOCUMENT_ROOT'] . '/Projet/client/';
-$serveurPath = $_SERVER['DOCUMENT_ROOT'] . '/Projet/serveur/';
-$serveurUrl = '/Projet/serveur/';
-$clientUrl = '/Projet/client/';
+
+$rootPath = realpath(__DIR__ . '/../../');
+
+$serveurPath = $rootPath . '/serveur/';
+$clientPath = $rootPath . '/client/';
+
+
+$projectName = basename($rootPath); 
+$serveurUrl = '/' . $projectName . '/serveur/';
+$clientUrl = '/' . $projectName . '/client/';
 ?>
