@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("serveur/src/config_paths.php");
 $msg="";
 if (isset($_GET['msg'])){
     $msg= $_GET['msg'];
@@ -13,13 +14,6 @@ if (isset($_SESSION['idm'], $_SESSION['role'])) {
         header('Location: serveur/src/membre/membre.php');
         exit();
     }
-}
-
-if (!isset($_SESSION['agent']) || $_SESSION['agent'] !== $_SERVER['HTTP_USER_AGENT']) {
-    session_unset();
-    session_destroy();
-    header('Location: index.php?msg=' . urlencode("Session invalide"));
-    exit();
 }
 
 ?>
@@ -46,17 +40,20 @@ if (!isset($_SESSION['agent']) || $_SESSION['agent'] !== $_SERVER['HTTP_USER_AGE
     <script src="client/js/requetes.js"></script>
     <script src="client/js/slick.min.js"></script>
     <script src="client/js/nouislider.min.js"></script>
+    <script>
+  window.serveurUrl = "<?= $serveurUrl ?>";
+</script>
 
 </head>
 <body>
-    <?php include("serveur/src/components/headerIndex.php"); ?>
+    <?php include($serveurPath . "src/components/headerIndex.php"); ?>
     
     <nav id="navigation">
-        <?php include("serveur/src/components/navBarIndex.php"); ?>
+        <?php include($serveurPath . "src/components/navBarIndex.php"); ?>
     </nav>
 
 
-        <div class="container carouselIndex">
+        <div class="container-fluid carouselIndex">
             <div class="row">
                 <div class="col-md-12 ">
                 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="7000">
@@ -138,8 +135,8 @@ if (!isset($_SESSION['agent']) || $_SESSION['agent'] !== $_SERVER['HTTP_USER_AGE
         
 
 
-    <?php include("serveur/src/components/footerIndex.php"); ?>
-    <?php include("serveur/src/components/modales.php"); ?>
+    <?php include($serveurPath . "src/components/footerIndex.php"); ?>
+    <?php include($serveurPath . "src/components/modales.php"); ?>
 
     
     
@@ -159,6 +156,10 @@ if (!isset($_SESSION['agent']) || $_SESSION['agent'] !== $_SERVER['HTTP_USER_AGE
     }, 5000);
 </script>
 <?php endif; ?>
+
+<script>
+  window.utilisateurRole = <?= isset($_SESSION['role']) ? json_encode($_SESSION['role']) : 'null' ?>;
+</script>
 
 
 </body>

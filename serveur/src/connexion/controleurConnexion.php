@@ -31,7 +31,7 @@ class ControleurConnexion {
                 header('Location: ../membre/membre.php');
             }
         } else {
-            header('Location: ../../../index.html?msg=' . urlencode($resultat['message']));
+            header('Location: ../../../index.php?msg=' . urlencode($resultat['message']));
         }
     }
 
