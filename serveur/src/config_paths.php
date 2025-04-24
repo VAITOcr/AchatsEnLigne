@@ -1,4 +1,10 @@
 <?php
+if (!defined('SECURE_ACCESS')) {
+    http_response_code(403);
+    exit('Accès interdit.');
+}
+
+
 $rootPath = realpath(__DIR__ . '/../../');
 $serveurPath = $rootPath . '/serveur/';
 $clientPath = $rootPath . '/client/';

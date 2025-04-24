@@ -1,5 +1,6 @@
 <?php
 session_start();
+define('SECURE_ACCESS', true); // Définir une constante pour sécuriser l'accès
 include("serveur/src/config_paths.php");
 $msg="";
 if (isset($_GET['msg'])){
