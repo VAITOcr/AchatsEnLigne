@@ -42,4 +42,13 @@ $(".products-slick").slick({
     },
   ],
 });
+
+//fonction pour habiliter ou deshabiliter le bouton de deconnexion
+function toggleLogoutButton() {
+  const logoutButton = document.getElementById("logout-button");
+  if (!window.utilisateurRole === "M" || !window.utilisateurRole === "A") {
+    logoutButton.style.display = "";
+  }
+}
+
 window.filterArticlesByCategory = filterArticlesByCategory;
