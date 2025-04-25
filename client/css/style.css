@@ -849,3 +849,17 @@ html {
     transform: translateY(0);
   }
 }
+
+.panier-article {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.miniature-panier {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}

@@ -44,22 +44,21 @@ export function renderArticles(articles) {
       starsHTML += `<i class="fa fa-star"></i>`;
     }
 
-    let addToCartHTML = "";
-    if (window.utilisateurRole === "M") {
-      addToCartHTML = `
-        <div class="add-to-cart">
-          <button class="add-to-cart-btn">
-            <i class="fa fa-shopping-cart"></i> add to cart
-          </button>
-        </div>`;
-    } else {
-      addToCartHTML = `
-        <div class="add-to-cart">
-          <button class="add-to-cart-btn" disabled style="cursor: not-allowed; opacity: 0.5;" title="Connectez-vous en tant que membre pour ajouter au panier">
-            <i class="fa fa-shopping-cart"></i> add to cart
-          </button>
-        </div>`;
-    }
+    let addToCartHTML = `
+  <div class="add-to-cart">
+    <button class="add-to-cart-btn" 
+      data-photo="${article.photo}"
+      data-id="${article.id}" 
+      data-name="${article.name}" 
+      data-price="${article.price}"
+      ${
+        window.utilisateurRole === "M"
+          ? ""
+          : 'disabled style="cursor: not-allowed; opacity: 0.5;" title="Connectez-vous en tant que membre pour ajouter au panier"'
+      }>
+      <i class="fa fa-shopping-cart"></i> add to cart
+    </button>
+  </div>`;
 
     articleElement.innerHTML = `
       <div class="product p-3 m-2 shadow-sm">

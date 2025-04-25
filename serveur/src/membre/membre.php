@@ -31,13 +31,13 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
 
   <script src="<?= $clientUrl ?>utilitaires/jquery-3.7.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <script type="module" src="<?= $clientUrl ?>js/global.js"></script>
+  <script type="module" src="<?= $clientUrl ?>js/global.js" ></script>
   <script src="<?= $clientUrl ?>js/requetes.js"></script>
   <script src="<?= $clientUrl ?>js/slick.min.js"></script>
   <script src="<?= $clientUrl ?>js/nouislider.min.js"></script>
-  <script src="<?= $clientUrl ?>js/Vues/vuesMembres.js"></script>
 </head>
   <body>
+    <?php include($serveurPath . "src/membre/components/panier.php"); ?>
     <?php include($serveurPath . "src/components/headerIndex.php"); ?>
 
     <nav id="navigation">
@@ -147,7 +147,13 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
 
     <?php include($serveurPath . "src/components/footerIndex.php"); ?>
     <?php include($serveurPath . "src/components/modales.php"); ?>
-    <?php include($serveurPath . "src/membre/components/panier.php"); ?>
+    <div id="toast-panier" style="display:none; position: fixed; bottom: 20px; right: 20px; z-index: 9999; border-color: black; background-color: #c70027; color: white; border-radius: 10px; padding: 16px 20px; display: flex; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.4s ease, transform 0.4s ease;">
+  <img id="toast-img" src="" alt="" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px; margin-right: 15px;">
+  <div>
+    <strong id="toast-title" style="font-size: 16px;">Produit</strong><br>
+    <span id="toast-text">Ajouté au panier</span>
+  </div>
+</div>
 
     <?php if (!empty($msg)): ?>
     <div
@@ -172,7 +178,6 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
     </div>
 
     <script>
-      // Disparition automatique après 5 secondes
       setTimeout(function () {
         $("#custom-toast").fadeOut("slow", function () {
           $(this).alert("close");
@@ -183,6 +188,7 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
 
     <script>
       window.utilisateurRole = <?= isset($_SESSION['role']) ? json_encode($_SESSION['role']) : 'null' ?>;
+      window.utilisateurId = <?= json_encode($_SESSION['idm']) ?>;
     </script>
   </body>
 </html>

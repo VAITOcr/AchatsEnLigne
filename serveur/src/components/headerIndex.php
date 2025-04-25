@@ -16,7 +16,26 @@ include_once __DIR__ . '/../config_paths.php';
 					<ul class="header-links pull-right">
 						<li><a href="#" data-toggle="modal" data-target="#idConnexion"><i class="fa fa-user-o"></i> Connexion</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#idEnreg"><i class="fa fa-user-plus"></i> Inscription</a></li>
-						<li><a href="#" id="panier-button"> <i class="fa fa-shopping-cart" style="color: red; margin-right: 6px;"></i> Mon panier </a></li>
+						<li style="position: relative;">
+  <a href="#" id="panier-button">
+    <i class="fa fa-shopping-cart"></i> Mon panier   
+    <span id="panier-count" style="
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background: #c70027;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px; /* demi-pill shape */
+  display: none;
+  line-height: 1;
+  text-align: center;
+  min-width: 18px;
+">0</span>
+  </a>
+</li>
 						<li><a href="<?= $serveurUrl ?>src/connexion/deconnecter.php" id="logout-button"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 					</ul>
 				</div>

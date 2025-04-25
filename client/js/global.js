@@ -11,6 +11,16 @@ document.addEventListener("DOMContentLoaded", function () {
   toggleLogoutButton();
   togglePanierButton();
   toggleConnexionInscriptionButtons();
+
+  const intervalId = setInterval(() => {
+    const panier = document.getElementById("mini-panier");
+    if (panier) {
+      clearInterval(intervalId);
+      import("./Vues/vuesMembres.js").then((module) => {
+        module.initPanier();
+      });
+    }
+  });
 });
 
 //fonction pour habiliter ou deshabiliter le bouton de deconnexion
