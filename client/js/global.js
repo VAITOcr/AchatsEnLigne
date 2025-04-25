@@ -9,6 +9,7 @@ import {
 
 document.addEventListener("DOMContentLoaded", function () {
   toggleLogoutButton();
+  togglePanierButton();
 });
 
 //fonction pour habiliter ou deshabiliter le bouton de deconnexion
@@ -19,6 +20,16 @@ function toggleLogoutButton() {
     logoutButton.style.display = "inline-block"; // ou "block" selon ton layout
   } else {
     logoutButton.style.display = "none";
+  }
+}
+
+function togglePanierButton() {
+  const panierButton = document.getElementById("panier-button");
+
+  if (window.utilisateurRole === "M" || window.utilisateurRole === "A") {
+    panierButton.style.display = "inline-block"; // ou "block" selon ton layout
+  } else {
+    panierButton.style.display = "none";
   }
 }
 

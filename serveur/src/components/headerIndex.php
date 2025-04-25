@@ -16,6 +16,7 @@ include_once __DIR__ . '/../config_paths.php';
 					<ul class="header-links pull-right">
 						<li><a href="#" data-toggle="modal" data-target="#idConnexion"><i class="fa fa-user-o"></i> Connexion</a></li>
                         <li><a href="#" data-toggle="modal" data-target="#idEnreg"><i class="fa fa-user-plus"></i> Inscription</a></li>
+						<li><a href="#"i class="fa fa-shopping-cart" id="panier-button"></i> Mon panier</a></li>
 						<li><a href="<?= $serveurUrl ?>src/connexion/deconnecter.php" id="logout-button"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
 					</ul>
 				</div>
