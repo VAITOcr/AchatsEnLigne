@@ -10,6 +10,7 @@ import {
 document.addEventListener("DOMContentLoaded", function () {
   toggleLogoutButton();
   togglePanierButton();
+  toggleConnexionInscriptionButtons();
 });
 
 //fonction pour habiliter ou deshabiliter le bouton de deconnexion
@@ -30,6 +31,23 @@ function togglePanierButton() {
     panierButton.style.display = "inline-block"; // ou "block" selon ton layout
   } else {
     panierButton.style.display = "none";
+  }
+}
+
+function toggleConnexionInscriptionButtons() {
+  const connexionButton = document.querySelector(
+    'a[data-target="#idConnexion"]'
+  ).parentElement;
+  const inscriptionButton = document.querySelector(
+    'a[data-target="#idEnreg"]'
+  ).parentElement;
+
+  if (window.utilisateurRole === "M" || window.utilisateurRole === "A") {
+    connexionButton.style.display = "none";
+    inscriptionButton.style.display = "none";
+  } else {
+    connexionButton.style.display = "inline-block";
+    inscriptionButton.style.display = "inline-block";
   }
 }
 

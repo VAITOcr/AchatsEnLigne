@@ -35,6 +35,7 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
   <script src="<?= $clientUrl ?>js/requetes.js"></script>
   <script src="<?= $clientUrl ?>js/slick.min.js"></script>
   <script src="<?= $clientUrl ?>js/nouislider.min.js"></script>
+  <script src="<?= $clientUrl ?>js/Vues/vuesMembres.js"></script>
 </head>
   <body>
     <?php include($serveurPath . "src/components/headerIndex.php"); ?>
@@ -146,6 +147,7 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
 
     <?php include($serveurPath . "src/components/footerIndex.php"); ?>
     <?php include($serveurPath . "src/components/modales.php"); ?>
+    <?php include($serveurPath . "src/membre/components/panier.php"); ?>
 
     <?php if (!empty($msg)): ?>
     <div
