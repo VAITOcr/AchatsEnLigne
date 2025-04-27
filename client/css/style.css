@@ -8,6 +8,11 @@ body {
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #1e1f29;
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .header-links li {
@@ -37,6 +42,7 @@ body {
   padding-top: 15px;
   padding-bottom: 15px;
   background-color: #15161d;
+  margin-top: 50px;
 }
 
 .header-logo {
@@ -826,7 +832,7 @@ html {
 
 #mini-panier {
   display: none;
-  position: absolute;
+  position: fixed;
   top: 60px;
   right: 20px;
   z-index: 1000;
@@ -1193,9 +1199,24 @@ html {
   max-height: 800px;
 }
 
+.storeMembre {
+  border: 2px solid #ff0000;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(255, 0, 0, 0.3);
+  width: 95%;
+  max-width: 1400px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.storeMembre:hover {
+  transform: scale(1.01) rotate(-0.3deg);
+  box-shadow: 0 12px 24px rgba(255, 0, 0, 0.5);
+}
 #membre-store .product {
   height: 400px;
   margin-bottom: 50px;
+  background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1215,4 +1236,3 @@ html {
 #store .product {
   display: block;
 }
-

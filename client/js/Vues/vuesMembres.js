@@ -258,7 +258,7 @@ function setupPagination() {
 
   for (let i = 1; i <= totalPages; i++) {
     const li = document.createElement("li");
-    li.innerHTML = `<a href="#">${i}</a>`;
+    li.innerHTML = `<span style="cursor:pointer;">${i}</span>`;
     if (i === pageActuelle) {
       li.classList.add("active");
     }

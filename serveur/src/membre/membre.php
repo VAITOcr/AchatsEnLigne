@@ -86,7 +86,7 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
       </div>
     </div>
 
-    <div class="container">
+    <div class="container storeMembre">
    <!-- SECTION -->
 		<div class="section">
 			<!-- container -->
