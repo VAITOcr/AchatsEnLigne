@@ -51,7 +51,7 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
             id="carousel-example-generic"
             class="carousel slide"
             data-ride="carousel"
-            data-interval="7000"
+            data-interval="5000"
           >
             <!-- Slides -->
             <div class="carousel-inner" role="listbox"></div>
@@ -87,62 +87,120 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
     </div>
 
     <div class="container">
-      <!-- SECTION -->
-      <div class="section">
-        <!-- conteneur -->
-        <div class="container">
-          <!-- ligne -->
-          <div class="row">
-            <!-- titre de la section -->
-            <div class="col-md-12">
-              <div class="section-title">
-                <h3 class="title">Nouveaux produits MEMBRE</h3>
-                <div class="section-nav">
-                  <ul class="section-tab-nav tab-nav">
-                    <li class="active">
-                      <a class="tab-link" data-category="Tous" href="#">Tous</a>
-                    </li>
-                    <li>
-                      <a class="tab-link" data-category="Smartphone" href="#"
-                        >Smartphones</a
-                      >
-                    </li>
-                    <li>
-                      <a class="tab-link" data-category="Laptop" href="#"
-                        >Laptops</a
-                      >
-                    </li>
-                    <li>
-                      <a class="tab-link" data-category="Autres" href="#"
-                        >Autres</a
-                      >
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <!-- /titre de la section -->
+   <!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<!-- ASIDE -->
+					<div id="aside" class="col-md-3">
+						<!-- aside Widget -->
+						<div class="aside">
+							<h3 class="aside-title">Categories</h3>
+							<div class="checkbox-filter">
 
-            <!-- Onglets produits + slick -->
-            <div class="col-md-12">
-              <div class="row">
-                <div class="products-tabs">
-                  <!-- onglet -->
-                  <div id="tab1" class="tab-pane active">
-                    <div class="products-slick" data-nav="#slick-nav-1"></div>
-                    <div id="slick-nav-1" class="products-slick-nav"></div>
-                  </div>
-                  <!-- /onglet -->
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-1" value="Laptop">
+									<label for="category-1">
+										<span></span>
+										Laptops
+										<small class="count-products" data-category="Laptop">(0)</small>
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-2" value="Smartphone">
+									<label for="category-2">
+										<span></span>
+										Smartphones
+										<small class="count-products" data-category="Smartphone">(0)</small>
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-3" value="Moniteur">
+									<label for="category-3">
+										<span></span>
+										Moniteurs
+										<small class="count-products" data-category="Moniteur">(0)</small>
+									</label>
+								</div>
+
+								<div class="input-checkbox">
+									<input type="checkbox" id="category-4" value="Accessories">
+									<label for="category-4">
+										<span></span>
+										Accessories
+										<small class="count-products" data-category="Accessories">(0)</small>
+									</label>
+								</div>
+
+                <div class="input-checkbox">
+                  <input type="checkbox" id="category-5" value="Autres">
+                  <label for="category-5">
+                    <span></span>
+                    Autres
+                    <small class="count-products" data-category="Autres">(0)</small>
+                  </label>
                 </div>
-              </div>
-            </div>
-            <!-- /Onglets produits + slick -->
-          </div>
-          <!-- /ligne -->
-        </div>
-        <!-- /conteneur -->
-      </div>
-      <!-- /SECTION -->
+							</div>
+						</div>
+						<!-- /aside Widget -->
+
+						<!-- aside Widget -->
+						<div class="aside">
+							<h3 class="aside-title">Price</h3>
+							<div class="price-filter">
+								<div id="price-slider"></div>
+								<div class="input-number price-min">
+									<input id="price-min" type="number">
+									<span class="qty-up">+</span>
+									<span class="qty-down">-</span>
+								</div>
+								<span>-</span>
+								<div class="input-number price-max">
+									<input id="price-max" type="number">
+									<span class="qty-up">+</span>
+									<span class="qty-down">-</span>
+								</div>
+							</div>
+						</div>
+						<!-- /aside Widget -->
+
+					
+					</div>
+					<!-- /ASIDE -->
+					<!-- STORE -->
+					<div id="membre-store" class="col-md-9">
+
+						<!-- store products -->
+						<div class="row">
+							
+
+						</div>
+						<!-- /store products -->
+
+						<!-- store bottom filter -->
+						<div class="store-filter clearfix">
+							<span class="store-qty"></span>
+							<ul class="store-pagination">
+								<li class="active">1</li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+							</ul>
+						</div>
+						<!-- /store bottom filter -->
+					</div>
+					<!-- /STORE -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
     </div>
 
     <?php include($serveurPath . "src/components/footerIndex.php"); ?>

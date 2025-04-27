@@ -23,7 +23,10 @@ export async function getArticles() {
   if (Array.isArray(data.donnees)) {
     allArticles = data.donnees;
 
-    renderArticles(allArticles);
+    if (!window.utilisateurRole) {
+      renderArticles(allArticles);
+    }
+
     articlesFeatured(allArticles);
   }
 }
@@ -56,7 +59,7 @@ export function renderArticles(articles) {
           ? ""
           : 'disabled style="cursor: not-allowed; opacity: 0.5;" title="Connectez-vous en tant que membre pour ajouter au panier"'
       }>
-      <i class="fa fa-shopping-cart"></i> add to cart
+      <i class="fa fa-shopping-cart"></i> Acheter
     </button>
   </div>`;
 
@@ -73,7 +76,7 @@ export function renderArticles(articles) {
           <div class="product-btns">
             <button class="quick-view">
               <i class="fa fa-eye"></i>
-              <span class="tooltipp">quick view</span>
+              <span class="tooltipp">voir</span>
             </button>
           </div>
         </div>

@@ -57,7 +57,7 @@ if (isset($_SESSION['idm'], $_SESSION['role'])) {
         <div class="container-fluid carouselIndex">
             <div class="row">
                 <div class="col-md-12 ">
-                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="7000">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" data-interval="5000">
     
 
                         <!-- Slides -->

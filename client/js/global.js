@@ -5,6 +5,8 @@ import {
   chercherHeaderArticles,
 } from "./Vues/vuesArticles.js";
 
+import { setupArticlesMembre } from "./Vues/vuesMembres.js";
+
 //DOM manipulation
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -62,11 +64,14 @@ function toggleConnexionInscriptionButtons() {
 }
 
 $(document).ready(function () {
-  // Appel de la fonction pour charger les articles
+  // Appel de la fonction pour charger les articles au chargement de la page
   getArticles();
   //appel de la fonction pour charger les articles cherches dans le header
   chercherHeaderArticles();
   // Pour quand on clique sur un bouton du carrousel
+  if (window.utilisateurRole === "M") {
+    setupArticlesMembre();
+  }
   $(".carousel-control").on("mouseup", function () {
     $(this).blur();
   });
