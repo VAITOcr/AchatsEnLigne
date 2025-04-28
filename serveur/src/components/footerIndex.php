@@ -35,7 +35,7 @@
 						<div class="col-md-3 col-sm-6">
 							<div class="footer">
 								<h3 class="footer-title">Copyright</h3>
-								<p>Copyright &copy; 2023 APVinc. Tous droits réservés.</p>
+								<p>Copyright &copy; 2025 APVinc. Tous droits réservés.</p>
 							</div>
 						</div>
 					</div>
