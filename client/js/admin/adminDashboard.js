@@ -97,7 +97,7 @@ function afficherTableArticles() {
         <td>${article.rating}</td>
         <td>${article.categorie}</td>
         <td>
-          <button class="btn btn-primary btn-xs btn-edit"
+          <button class="btn btn-primary btn-xs btn-edit" 
             data-id="${article.id}"
             data-name="${article.name}"
             data-categorie="${article.categorie}"
@@ -105,10 +105,10 @@ function afficherTableArticles() {
             data-photo="${article.photo}"
             data-featured="${article.featured}"
             data-rating="${article.rating}"
-            data-description="${article.description}">Modifier</button>
+            data-description="${article.description}"> <i class="fa fa-pencil"></i> </button>
           <button class="btn btn-danger btn-xs btn-delete" data-id="${
             article.id
-          }">Supprimer</button>
+          }"> <i class="fa fa-trash"></i> </button>
         </td>
       </tr>
     `;
