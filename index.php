@@ -95,11 +95,14 @@ if (isset($_SESSION['idm'], $_SESSION['role'])) {
 							<ul class="section-tab-nav tab-nav">
 								<li class="active">
                                 <a class="tab-link" data-category="Tous" href="#">Tous</a></li>
+                                <li><a class="tab-link" data-category="Accessoires" href="#">Accessoires</a></li>
 								<li>
                                 <a class="tab-link" data-category="Smartphone" href="#">Smartphones</a></li>
 								<li>
                                     <a class="tab-link" data-category="Laptop" href="#">Laptops</a></li>
-								<li><a class="tab-link" data-category="Autres" href="#">Autres</a></li>
+                                
+                                <li><a class="tab-link" data-category="Moniteur" href="#">Moniteurs</a></li>
+                                <li><a class="tab-link" data-category="Autres" href="#">Autres</a></li>
 							</ul>
 						</div>
 					</div>
