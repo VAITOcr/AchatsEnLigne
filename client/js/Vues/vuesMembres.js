@@ -1,7 +1,11 @@
+import { articlesFeatured } from "./vuesArticles.js";
+
 let allArticles = [];
 let articlesFiltred = [];
 let pageActuelle = 1;
 let articlesParPage = 6;
+let htmlInitiale = "";
+let panierClickListener;
 
 function setupPanierInteraction() {
   const interval = setInterval(() => {
@@ -47,7 +51,11 @@ export function initPanier() {
   afficherMiniPanier();
   mettreAJourCompteurPanier();
 
-  document.addEventListener("click", function (event) {
+  if (panierClickListener) {
+    document.removeEventListener("click", panierClickListener);
+  }
+
+   panierClickListener = function (event){
     if (
       event.target.closest(".add-to-cart-btn") &&
       window.utilisateurRole === "M"
@@ -72,7 +80,8 @@ export function initPanier() {
       afficherToastPanier(name, photo); // Affiche le toast
       mettreAJourCompteurPanier(); // Met à jour le compteur du panier
     }
-  });
+  };
+  document.addEventListener("click", panierClickListener);
 }
 
 function mettreAJourCompteurPanier() {
@@ -173,6 +182,7 @@ async function getArticlesMembre() {
 
     if (Array.isArray(data.donnees)) {
       allArticles = data.donnees;
+      allArticles.sort((a, b) => a.price - b.price);
       articlesFiltred = [...allArticles];
       renderArticlesMembre();
       setupPagination();
@@ -207,9 +217,6 @@ function renderArticlesMembre() {
           <h4 class="product-price">${article.price} $</h4>
           <div class="product-rating">
             ${generateStars(article.rating)}
-          </div>
-          <div class="product-btns">
-            <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Voir</span></button>
           </div>
         </div>
         <div class="add-to-cart">
@@ -272,8 +279,6 @@ function setupPagination() {
   }
 }
 
-
-
 function miseAJourComptesCategories() {
   const compteCategorie = {};
 
@@ -293,7 +298,6 @@ function miseAJourComptesCategories() {
     small.textContent = `(${compteCategorie[categorie]})`;
   });
 }
-
 
 function appliquerTousLesFiltres() {
   const checkedCategories = Array.from(
@@ -325,6 +329,73 @@ function appliquerTousLesFiltres() {
   setupPagination();
 }
 
+async function afficherFacture() {
+  const contenu = document.getElementById("contenu-principal");
+  try {
+    const response = await fetch(window.serveurUrl + "src/membre/facture.php");
+    const html = await response.text();
+    contenu.innerHTML = html;
+
+    remplirFacture();
+  } catch (error) {
+    console.error("Une erreur s'est produite lors de la requête : ", error);
+  }
+}
+
+function remplirFacture() {
+  const panier = JSON.parse(localStorage.getItem(getPanierKey())) || [];
+
+  const factureContenu = document.getElementById("facture-contenu");
+  const totalElement = document.getElementById("facture-total");
+
+  if (!factureContenu || !totalElement) return;
+
+  let total = 0;
+  let html = '<ul class="list-group mb-3">';
+
+  panier.forEach((item) => {
+    const subtotal = item.price * item.qty;
+    total += subtotal;
+
+    html += `
+      <li class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+          <h6 class="my-0">${item.qty} × ${item.name}</h6>
+          <small class="text-muted">Prix unitaire: ${item.price.toFixed(
+            2
+          )} $</small>
+        </div>
+        <span class="text-muted">${subtotal.toFixed(2)} $</span>
+      </li>
+    `;
+    html += "</ul>";
+
+    factureContenu.innerHTML = html;
+    totalElement.textContent = total.toFixed(2) + " $";
+
+    const confirmerBtn = document.getElementById("confirmer-paiement");
+    confirmerBtn.addEventListener("click", () => {
+      localStorage.removeItem(getPanierKey());
+
+      // Afficher un toast de confirmation
+      const toast = document.getElementById("toast-confirmation");
+      toast.style.opacity = "1";
+      toast.style.transform = "translateY(0)";
+      toast.style.display = "flex";
+
+      setTimeout(() => {
+        toast.style.opacity = "0";
+        toast.style.transform = "translateY(20px)";
+        setTimeout(() => {
+          toast.style.display = "none";
+          document.querySelector("#home-bouton")?.click(); // Simuler clic vers "home"
+        }, 400);
+      }, 2000);
+    });
+  });
+
+}
+
 function setupListenersBoutonsPrix() {
   const priceMinInput = document.getElementById("price-min");
   const priceMaxInput = document.getElementById("price-max");
@@ -341,7 +412,10 @@ function setupListenersBoutonsPrix() {
     });
 
     qtyDownMin.addEventListener("click", () => {
-      priceMinInput.value = Math.max(0, parseInt(priceMinInput.value || 0) - 100);
+      priceMinInput.value = Math.max(
+        0,
+        parseInt(priceMinInput.value || 0) - 100
+      );
       appliquerTousLesFiltres();
     });
 
@@ -357,10 +431,70 @@ function setupListenersBoutonsPrix() {
   }
 }
 
+function setupListeners() {
+  const boutonPaiement = document.getElementById("passer-au-paiement");
 
+  if (boutonPaiement) {
+    boutonPaiement.addEventListener("click", afficherFacture);
+  }
+
+  const logoBouton = document.getElementById("logo");
+  if (logoBouton) {
+    logoBouton.addEventListener("click", () => {
+      window.location.href = window.serveurUrl + "index.php";
+    });
+  }
+
+  document.addEventListener("click", async function (event) {
+    const homeBouton = event.target.closest("#home-bouton");
+
+    if (homeBouton) {
+      event.preventDefault();
+
+      try {
+        const response = await fetch(
+          window.serveurUrl + "src/membre/membre.php"
+        );
+        const html = await response.text();
+
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, "text/html");
+        const newBodyContent = doc.body.innerHTML;
+        document.body.innerHTML = newBodyContent;
+        toggleConnexionInscriptionButtons();
+        $("#carousel-example-generic").carousel();
+        articlesFeatured(allArticles);
+        setupArticlesMembre();
+        setupListeners();
+        setupListenersBoutonsPrix();
+        initPanier(); // Reinitialiser le panier
+      } catch (error) {
+        console.error("Erreur lors du retour à la boutique :", error);
+      }
+    }
+  });
+}
+
+function toggleConnexionInscriptionButtons() {
+   const connexionButton = document.querySelector(
+          'a[data-target="#idConnexion"]'
+        ).parentElement;
+        const inscriptionButton = document.querySelector(
+          'a[data-target="#idEnreg"]'
+        ).parentElement;
+
+        if (window.utilisateurRole === "M" || window.utilisateurRole === "A") {
+          connexionButton.style.display = "none";
+          inscriptionButton.style.display = "none";
+        } else {
+          connexionButton.style.display = "inline-block";
+          inscriptionButton.style.display = "inline-block";
+        }
+}
 
 export function setupArticlesMembre() {
   getArticlesMembre();
   gererFiltrage();
   setupListenersBoutonsPrix();
+  setupListeners();
 }

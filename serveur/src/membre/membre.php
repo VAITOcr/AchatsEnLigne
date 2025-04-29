@@ -43,7 +43,7 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
     <nav id="navigation">
       <?php include($serveurPath . "src/components/navBarIndex.php"); ?>
     </nav>
-
+<div id="contenu-principal">
     <div class="container-fluid carouselIndex">
       <div class="row">
         <div class="col-md-12">
@@ -90,7 +90,7 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
    <!-- SECTION -->
 		<div class="section">
 			<!-- container -->
-			<div class="container">
+			<div class="container-principal">
 				<!-- row -->
 				<div class="row">
 					<!-- ASIDE -->
@@ -202,6 +202,7 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
 		</div>
 		<!-- /SECTION -->
     </div>
+</div>
 
     <?php include($serveurPath . "src/components/footerIndex.php"); ?>
     <?php include($serveurPath . "src/components/modales.php"); ?>
@@ -211,6 +212,25 @@ if (!isset($_SESSION['idm']) || $_SESSION['role'] !== 'M' || $_SESSION['agent'] 
     <strong id="toast-title" style="font-size: 16px;">Produit</strong><br>
     <span id="toast-text">Ajouté au panier</span>
   </div>
+</div>
+
+<div id="toast-confirmation" style="
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: white;
+  border-radius: 10px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 9999;
+">
+  <strong style="margin-right: 8px;">✔</strong> Commande reçue avec succès !
 </div>
 
     <?php if (!empty($msg)): ?>

@@ -73,12 +73,6 @@ export function renderArticles(articles) {
           <h4 class="product-category">${article.categorie}</h4>
           <h4 class="product-price">${article.price} $</h4>
           <div class="product-rating">${starsHTML}</div>
-          <div class="product-btns">
-            <button class="quick-view">
-              <i class="fa fa-eye"></i>
-              <span class="tooltipp">voir</span>
-            </button>
-          </div>
         </div>
         ${addToCartHTML}
       </div>

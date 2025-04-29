@@ -12,7 +12,7 @@
   </ul>
   <div class="text-right">
     <strong>Total : <span id="total-panier">0</span> $</strong><br>
-    <a href="#" class="btn btn-primary btn-sm mt-2">Passer au paiement</a>
+    <a href="#" id="passer-au-paiement" class="btn btn-primary btn-sm mt-2">Passer au paiement</a>
   </div>
   <div id="mini-panier" style="display: none; position: absolute; top: 60px; right: 20px; background: #fff; border: 1px solid #ccc; padding: 15px; width: 350px; max-height: 400px; overflow-y: auto; box-shadow: 0 0 10px rgba(0,0,0,0.2); z-index: 999;">
   <h4>Mon panier</h4>

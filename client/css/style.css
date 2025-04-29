@@ -1214,7 +1214,7 @@ html {
   box-shadow: 0 12px 24px rgba(255, 0, 0, 0.5);
 }
 #membre-store .product {
-  height: 400px;
+  height: 350px;
   margin-bottom: 50px;
   background-color: #fff;
   display: flex;
@@ -1235,4 +1235,40 @@ html {
 
 #store .product {
   display: block;
+}
+
+
+.facture-contenu {
+  border: 2px solid #c70027;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #fff;
+  margin-bottom: 20px;
+  box-shadow: 0 0 12px rgba(199, 0, 39, 0.2);
+}
+
+.facture-contenu h4 {
+  color: #c70027;
+}
+
+#facture-contenu li {
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+
+#confirmer-paiement {
+  background-color: #c70027;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  margin-top: 15px;
+  display: inline-block;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+#confirmer-paiement:hover {
+  background-color: #a90020;
 }

@@ -14,6 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
   togglePanierButton();
   toggleConnexionInscriptionButtons();
 
+  const boutonLogo = document.getElementById("logo");
+
+  if (boutonLogo) {
+    boutonLogo.addEventListener("click", () => {
+      window.location.href = window.serveurUrl + "index.php";
+    });
+  }
+
   const intervalId = setInterval(() => {
     const panier = document.getElementById("mini-panier");
     if (panier) {

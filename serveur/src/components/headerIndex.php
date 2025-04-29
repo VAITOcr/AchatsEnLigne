@@ -49,7 +49,7 @@ include_once __DIR__ . '/../config_paths.php';
 						
 						<div class="col-md-3">
 							<div class="header-logo">
-								<a href="#" class="logo">
+								<a href="" id="logo" class="logo">
 									<img src="<?= $clientUrl ?>images/logoNew.png" alt="">
 								</a>
 							</div>
