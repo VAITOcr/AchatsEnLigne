@@ -27,13 +27,20 @@ if ($action) {
             }
             break;
         case 'addArticle':
-            $id = $_POST['id'] ?? null;
-            $name = $_POST['name'] ?? null;
-            $description = $_POST['description'] ?? null;
-            $price = $_POST['price'] ?? null;
+            if (
+                isset($_POST['id'], $_POST['name'], $_POST['description'], $_POST['price'], $_POST['categorie']) &&
+                isset($_FILES['photo'])
+            ) {
+                $id = $_POST['id'];
+                $name = $_POST['name'];
+                $description = $_POST['description'];
+                $price = $_POST['price'];
+                $categorie = $_POST['categorie'];
+                $photo = $_FILES['photo'];
+                $featured = $_POST['featured'] ?? 'N';
+                $rating = $_POST['rating'] ?? 0;
 
-            if ($id && $name && $description && $price) {
-                $instanceControleurArticles->ajouterArticle($id, $name, $description, $price);
+                $instanceControleurArticles->ajouterArticle($id, $name, $description, $price, $photo, $categorie, $featured, $rating);
             } else {
                 echo json_encode(["error" => "Données manquantes pour ajouter un article."]);
             }
@@ -43,15 +50,19 @@ if ($action) {
             $name = $_POST['name'] ?? null;
             $description = $_POST['description'] ?? null;
             $price = $_POST['price'] ?? null;
+            $photo = $_FILES['photo'] ?? null;
+            $categorie = $_POST['categorie'] ?? null;
+            $featured = $_POST['featured'] ?? 'N';
+            $rating = $_POST['rating'] ?? 0;
 
-            if ($id && $name && $description && $price) {
-                $instanceControleurArticles->modifierArticle($id, $name, $description, $price);
+            if ($id && $name && $description && $price && $photo && $categorie && $featured && $rating) {
+                $instanceControleurArticles->modifierArticle($id, $name, $description, $price, $photo, $categorie, $featured, $rating);
             } else {
                 echo json_encode(["error" => "Données manquantes pour mettre à jour l'article."]);
             }
             break;
         case 'deleteArticle':
-            $id = $_POST['id'] ?? null;
+            $id = $_POST['id'] ?? $_GET['id'] ?? null;
             if ($id) {
                 $instanceControleurArticles->supprimerArticle($id);
             } else {
