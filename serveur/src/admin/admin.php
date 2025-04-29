@@ -1,5 +1,8 @@
 <?php
 
+define('SECURE_ACCESS', true); // Définir une constante pour safegarder l'accès
+require_once(__DIR__ . '/../config_paths.php');
+
 session_start();
 
 $tempsSession = 1800; // 30 minutes en secondes
@@ -21,14 +24,14 @@ $_SESSION['derniere_activite'] = time(); // Mettre à jour le temps de la derni�
 // Vérification de la session
 if (!isset($_SESSION['idm'])) {
     // Rediriger vers la page de connexion si l'utilisateur n'est pas connecté
-    header("Location: index.php?msg=Vous devez vous connecter pour accéder à cette page.");
+    header('Location: ../../../index.php?msg=' . urlencode(" Accès refusé."));
     exit();
 }
 
 // Vérification du rôle de l'utilisateur
 if ($_SESSION['role'] !== 'A') {
     // Rediriger vers la page d'accueil si l'utilisateur n'est pas un administrateur
-    header("Location: index.php?msg=Vous n'avez pas accès à cette page.");
+    header('Location: ../../../index.php?msg=' . urlencode(" Accès refusé."));
     exit();
 }
 
@@ -36,7 +39,7 @@ if ($_SESSION['role'] !== 'A') {
 if (!isset($_SESSION['agent']) || $_SESSION['agent'] !== $_SERVER['HTTP_USER_AGENT']) {
     session_unset();
     session_destroy();
-    header("Location: index.php?msg=" . urlencode("Vous devez vous connecter pour accéder à cette page."));
+    header('Location: ../../../index.php?msg=' . urlencode(" Votre session a expiré. Veuillez vous reconnecter."));
     exit();
 }
 
@@ -45,11 +48,41 @@ if (!isset($_SESSION['agent']) || $_SESSION['agent'] !== $_SERVER['HTTP_USER_AGE
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <script>
+  window.serveurUrl = "<?= $serveurUrl ?>";
+   window.clientUrl = "<?= $clientUrl ?>";
+</script>
+  <meta charset="UTF-8">
+  <title>Tableau de bord Admin</title>
+  <link rel="stylesheet" href="<?= $clientUrl ?>utilitaires/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="<?= $clientUrl ?>utilitaires/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="<?= $clientUrl ?>css/admin.css" />
+  
+
+  <script src="<?= $clientUrl ?>utilitaires/jquery-3.7.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <h1>Admin</h1>
+
+  <!-- Sidebar -->
+<div id="sidebar-admin">
+  <h4 class="text-center">Admin Panel</h4>
+  <a href="#" class="active" id="btn-articles"><i class="fa fa-cubes"></i> Articles</a>
+  <a href="#" id="btn-users"><i class="fa fa-users"></i> Utilisateurs</a>
+</div>
+
+<!-- Contenu dynamique -->
+<div id="contenu-admin">
+  <h2>Gestion des données</h2>
+  <div id="contenu-dynamique">
+    <!-- Le contenu changera ici -->
+  </div>
+</div>
+
+<div id="admin-toast" class="toast-message"></div>
+
+<?php include($serveurPath . "src/admin/components/modalesAdmin.php"); ?>
+<script type="module" src="<?= $clientUrl ?>js/admin/adminDashboard.js"></script>
+
 </body>
 </html>
