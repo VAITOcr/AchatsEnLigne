@@ -32,20 +32,17 @@ class ControleurMembre {
         echo json_encode($membre);
     }
 
-    public function ajouterMembre($idm, $nom, $prenom, $sexe, $daten, $photo, $courriel, $pass, $role, $statut) {
-        $membreExist = $this->daoMembres->getMembreById($idm);
+    public function ajouterMembre( $nom, $prenom, $sexe, $daten, $photo, $courriel, $pass, $role, $statut) {
+        $membreExist = $this->daoMembres->getMembreByCourriel($courriel);
         if ($membreExist){
             echo json_encode(["etat" => false, "message" => "Le membre existe deja."]);
             return;
         }
 
-        if (!isset($photo) || $photo['error'] !== UPLOAD_ERR_OK) {
-            echo json_encode(["etat" => false, "message" => "Aucune image valide recue."]);
-            return;
-        }
+        if (isset($photo) && $photo['error'] === UPLOAD_ERR_OK) {
+    $allowedTypes = ['image/jpeg', 'image/png'];
+    $mimeType = mime_content_type($photo['tmp_name']);
 
-        $allowedTypes = ['image/jpeg', 'image/png'];
-        $mimeType = mime_content_type($photo['tmp_name']);
 
         if (!in_array($mimeType, $allowedTypes)) {
             echo json_encode(["etat" => false, "message" => "Format d'image invalide. (JPG/PNG requis)"]);
@@ -54,7 +51,7 @@ class ControleurMembre {
 
         $extension = $mimeType === 'image/png' ? 'png' : 'jpg';
         $nomFichierPhoto = preg_replace('/[^a-zA-Z0-9_-]/', '_', strtolower($nom)) . '.' . $extension;
-        $destination = __DIR__ . '/../../photos/membresPhotos/' . $nomFichierPhoto;
+        $destination = __DIR__ . '/../../../photos/membresPhotos/' . $nomFichierPhoto;
 
         if (!move_uploaded_file($photo['tmp_name'], $destination)) {
             echo json_encode(["etat" => false, "message" => "Echec du telechargement de l'image."]);
@@ -62,32 +59,33 @@ class ControleurMembre {
         }
 
         if (!empty($pass)) {
-            $pepperedPass = hash_hmac('sha256', $pass, $_ENV['PEPPER']);
-            $pass = $pepperedPass;
+            $pepperedPass = hash_hmac('sha256', $pass, PEPPER);
+            $finalPass = password_hash($pepperedPass, PASSWORD_DEFAULT);
         } else {
-            $pass = null;
+            $pepperedPass = null;
+            $finalPass = null;
         }
 
-        $result = $this->daoMembres->addMembre($idm, $nom, $prenom, $sexe, $daten, $nomFichierPhoto, $courriel, $pass, $role, $statut);
+        $result = $this->daoMembres->addMembre( $nom, $prenom, $sexe, $daten, $nomFichierPhoto, $courriel, $finalPass, $role, $statut);
         if ($result) {
-            echo json_encode(["etat" => true, "message" => "Le membre a ete ajoute avec succes !"]);
-        } else {
-            echo json_encode(["etat" => false, "message" => "Une erreur s'est produite lors de l'ajout du membre."]);
+                echo json_encode(["etat" => true, "message" => "Le membre a ete ajoute avec succes !"]);
+            } else {
+                echo json_encode(["etat" => false, "message" => "Une erreur s'est produite lors de l'ajout du membre."]);
+            }
         }
     }
 
     public function modifierMembre($idm, $nom, $prenom, $sexe, $daten, $photo, $courriel, $pass, $role, $statut) {
-        $membreExist = $this->daoMembres->getMembreById($idm);
-        if (!$membreExist) {
-            echo json_encode(["etat" => false, "message" => "Le membre n'existe pas."]);
-            return;
-        }
+    $membreExist = $this->daoMembres->getMembreById($idm);
+    if (!$membreExist) {
+        echo json_encode(["etat" => false, "message" => "Le membre n'existe pas."]);
+        return;
+    }
 
-        if (!isset($photo) || $photo['error'] !== UPLOAD_ERR_OK) {
-            echo json_encode(["etat" => false, "message" => "Aucune image valide recue."]);
-            return;
-        }
+    $nomFichierPhoto = $membreExist->getPhoto(); // photo par défaut
 
+    // Traitement de la photo si une nouvelle est soumise
+    if (isset($photo) && $photo['error'] === UPLOAD_ERR_OK) {
         $allowedTypes = ['image/jpeg', 'image/png'];
         $mimeType = mime_content_type($photo['tmp_name']);
 
@@ -101,24 +99,28 @@ class ControleurMembre {
         $destination = __DIR__ . '/../../photos/membresPhotos/' . $nomFichierPhoto;
 
         if (!move_uploaded_file($photo['tmp_name'], $destination)) {
-            echo json_encode(["etat" => false, "message" => "Echec du telechargement de l'image."]);
+            echo json_encode(["etat" => false, "message" => "Échec du téléchargement de l'image."]);
             return;
         }
-
-        if (!empty($pass)) {
-            $pepperedPass = hash_hmac('sha256', $pass, $_ENV['PEPPER']);
-            $pass = $pepperedPass;
-        } else {
-            $pass = $membreExist->getConnexion()->getPass();
-        }
-
-        $result = $this->daoMembres->updateMembre($idm, $nom, $prenom, $sexe, $daten, $nomFichierPhoto, $courriel, $pass, $role, $statut);
-        if ($result) {
-            echo json_encode(["etat" => true, "message" => "Le membre a ete modifie avec succes !"]);
-        } else {
-            echo json_encode(["etat" => false, "message" => "Une erreur s'est produite lors de la modification du membre."]);
-        }
     }
+
+    // Traitement du mot de passe
+    if (!empty($pass)) {
+        $pepperedPass = hash_hmac('sha256', $pass, $_ENV['PEPPER']);
+        $finalPass = password_hash($pepperedPass, PASSWORD_DEFAULT);
+    } else {
+        $finalPass = $membreExist->getConnexion()->getPass(); 
+    }
+
+    // Mise à jour via DAO
+    $result = $this->daoMembres->updateMembre($idm, $nom, $prenom, $sexe, $daten, $nomFichierPhoto, $courriel, $finalPass, $role, $statut);
+    if ($result) {
+        echo json_encode(["etat" => true, "message" => "Le membre a été modifié avec succès !"]);
+    } else {
+        echo json_encode(["etat" => false, "message" => "Une erreur s'est produite lors de la modification du membre."]);
+    }
+}
+
 
     public function supprimerMembre($idm) {
         $membreExist = $this->daoMembres->getMembreById($idm);

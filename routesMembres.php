@@ -10,7 +10,8 @@ header('Content-Type: application/json');
 $instanceControleurMembres = ControleurMembre::getInstance();
 
 //routes
-$action= $_POST['action'] ?? $_GET['action'] ?? null;
+$action= $_POST['action'] ?? $_GET['action'] ?? $_REQUEST['action'] ?? null;
+
 
 if ($action) {
     switch ($action) {
@@ -26,43 +27,67 @@ if ($action) {
             }
             break;
         case 'addMembre':
-            $idm = $_POST['idm'] ?? null;
-            $nom = $_POST['nom'] ?? null;
-            $prenom = $_POST['prenom'] ?? null;
-            $sexe = $_POST['sexe'] ?? null;
-            $daten = $_POST['daten'] ?? null;
-            $photo = $_FILES['photo'] ?? null;
-            $courriel = $_POST['courriel'] ?? null;
-            $pass = $_POST['pass'] ?? null;
-            $role = $_POST['role'] ?? null;
-            $statut = $_POST['statut'] ?? null;
+                $nom = $_REQUEST['nom'] ?? null;
+                $prenom = $_REQUEST['prenom'] ?? null;
+                $sexe = $_REQUEST['sexe'] ?? null;
+                $daten = $_REQUEST['daten'] ?? null;
+                $photo = $_FILES['photo'] ?? null;
+                $courriel = $_REQUEST['courriel'] ?? null;
+                $pass = $_REQUEST['pass'] ?? null;
+                $role = $_REQUEST['role'] ?? null;
+                $statut = $_REQUEST['statut'] ?? null;
 
-            if ($idm && $nom && $prenom && $sexe && $daten && $photo && $courriel && $pass && $role && $statut) {
-                $instanceControleurMembres->ajouterMembre($idm, $nom, $prenom, $sexe, $daten, $photo, $courriel, $pass, $role, $statut);
-            } else {
-                echo json_encode(["error" => "Données manquantes pour ajouter un membre."]);
-            }
+            if ( $nom && $prenom && $sexe && $daten && $courriel && $role && $statut) {
+    $instanceControleurMembres->ajouterMembre( $nom, $prenom, $sexe, $daten, $photo, $courriel, $pass, $role, $statut);
+} else {
+    echo json_encode([
+    "etat" => false,
+    "message" => "Données manquantes pour l'ajout d’un membre.",
+    "debug" => [
+        "nom" => $nom,
+        "prenom" => $prenom,
+        "sexe" => $sexe,
+        "daten" => $daten,
+        "courriel" => $courriel,
+        "role" => $role,
+        "statut" => $statut
+    ]
+]);
+}
             break;
         case 'updateMembre':
-            $idm = $_POST['idm'] ?? null;
-            $nom = $_POST['nom'] ?? null;
-            $prenom = $_POST['prenom'] ?? null;
-            $sexe = $_POST['sexe'] ?? null;
-            $daten = $_POST['daten'] ?? null;
-            $photo = $_FILES['photo'] ?? null;
-            $courriel = $_POST['courriel'] ?? null;
-            $pass = $_POST['pass'] ?? null;
-            $role = $_POST['role'] ?? null;
-            $statut = $_POST['statut'] ?? null;
+            $idm = $_REQUEST['idm'] ?? null;
+    $nom = $_REQUEST['nom'] ?? null;
+    $prenom = $_REQUEST['prenom'] ?? null;
+    $sexe = $_REQUEST['sexe'] ?? null;
+    $daten = $_REQUEST['daten'] ?? null;
+    $courriel = $_REQUEST['courriel'] ?? null;
+    $role = $_REQUEST['role'] ?? null;
+    $statut = $_REQUEST['statut'] ?? null;
+    $pass = $_REQUEST['pass'] ?? null;
+    $photo = $_FILES['photo'] ?? null;
 
-            if ($idm && $nom && $prenom && $sexe && $daten && $photo && $courriel && $pass && $role && $statut) {
-                $instanceControleurMembres->modifierMembre($idm, $nom, $prenom, $sexe, $daten, $photo, $courriel, $pass, $role, $statut);
-            } else {
-                echo json_encode(["error" => "Données manquantes pour modifier un membre."]);
-            }
-            break;
+    if ($idm && $nom && $prenom && $sexe && $daten && $courriel && $role && $statut) {
+        $instanceControleurMembres->modifierMembre($idm, $nom, $prenom, $sexe, $daten, $photo, $courriel, $pass, $role, $statut);
+    } else {
+        echo json_encode([
+            "etat" => false,
+            "message" => "Données manquantes pour modifier un membre.",
+            "debug" => [
+                "idm" => $idm,
+                "nom" => $nom,
+                "prenom" => $prenom,
+                "sexe" => $sexe,
+                "daten" => $daten,
+                "courriel" => $courriel,
+                "role" => $role,
+                "statut" => $statut
+            ]
+        ]);
+    }
+    break;
         case 'deleteMembre':
-            $idm = $_POST['idm'] ?? null;
+            $idm = $_GET['idm'] ?? $_POST['idm'] ?? $_REQUEST['idm'] ?? null;
             if ($idm) {
                 $instanceControleurMembres->supprimerMembre($idm);
             } else {

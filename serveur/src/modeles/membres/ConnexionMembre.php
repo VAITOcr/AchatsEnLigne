@@ -1,6 +1,6 @@
 <?php
 
-class Connexion{
+class ConnexionMembre{
     public $idm;
     public $courriel;
     public $pass;

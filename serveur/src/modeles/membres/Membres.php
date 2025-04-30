@@ -71,7 +71,7 @@ class Membres{
         return $this->connexion;
     }
 
-    public function setConnexion(Connexion $connexion) {
+    public function setConnexion(ConnexionMembre $connexion) {
         $this->connexion = $connexion;
     }
 }
