@@ -7,7 +7,7 @@ SET time_zone = "+00:00";
 
 
 CREATE TABLE `articles` (
-  `id` int(12) NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `description` text DEFAULT NULL,
   `price` float NOT NULL,
