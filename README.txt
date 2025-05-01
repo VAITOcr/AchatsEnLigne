@@ -1,11 +1,11 @@
-# 🛒 AchatsEnLigne
+# AchatsEnLigne
 
 **AchatsEnLigne** est une plateforme d’achat en ligne moderne, conçue pour offrir une expérience utilisateur fluide et intuitive.  
 Ce projet vise à simplifier le processus d'achat pour les clients tout en fournissant aux administrateurs des outils puissants pour gérer les produits, les commandes et les utilisateurs.
 
 ---
 
-## ✨ Fonctionnalités
+## Fonctionnalités
 
 - **Catalogue de produits** : Parcourir une large gamme de produits avec des filtres par catégorie, prix, etc.
 - **Panier d’achat** : Ajouter, modifier ou supprimer des articles du panier.
@@ -15,7 +15,7 @@ Ce projet vise à simplifier le processus d'achat pour les clients tout en fourn
 
 ---
 
-## 🛠️ Technologies utilisées
+## Technologies utilisées
 
 - **Frontend** : React.js, Redux, Bootstrap  
 - **Backend** : Node.js, Express.js  
@@ -25,7 +25,7 @@ Ce projet vise à simplifier le processus d'achat pour les clients tout en fourn
 
 ---
 
-## 🚀 Installation
+## Installation
 
 ```bash
 git clone https://github.com/VAITOcr/AchatsEnLigne.git
