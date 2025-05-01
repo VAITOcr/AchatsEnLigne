@@ -19,7 +19,7 @@ if ($action) {
             $instanceControleurMembres->afficherMembres();
             break;
         case 'getMembreById':
-            $idm = $_PST['idm'] ?? $_GET['idm'] ?? null;
+            $idm = $_POST['idm'] ?? $_GET['idm'] ?? null;
             if ($idm) {
                 $instanceControleurMembres->afficherMembre($idm);
             } else {
