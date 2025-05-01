@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $controleur = new ControleurConnexion( $serveurUrl);
     $controleur->verifierConnexionEtSession($courriel, $mdp);
 } else {
-    header('Location: ../../../index.php?msg=' . urlencode("Méthode non autorisé"));
+    header('Location: ../../../index.php?msg=' . urlencode("Méthode non autorisée"));
     exit();
 }
 
