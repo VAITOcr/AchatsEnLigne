@@ -62,12 +62,14 @@ if (!isset($_SESSION['agent']) || $_SESSION['agent'] !== $_SERVER['HTTP_USER_AGE
   <script src="<?= $clientUrl ?>utilitaires/jquery-3.7.1.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+<header id="admin-header">
+  <img src="<?= $clientUrl ?>images/logoNew.png" alt="logo" id="logo-admin" />
+  <h1>Admin Dashboard</h1>
+</header>
 <body>
 
   <!-- Sidebar -->
 <div id="sidebar-admin">
-  <img src="<?= $clientUrl ?>images/logoNew.png" alt="logo"  id="logo-admin" />
-  <h4 class="text-center">Admin Dashboard</h4>
   <a href="#" class="active" id="btn-articles"><i class="fa fa-cubes"></i> Articles</a>
   <a href="#" id="btn-users"><i class="fa fa-users"></i> Utilisateurs</a>
   <a href="<?= $serveurUrl ?>src/connexion/deconnecter.php" class="btn-sortir">
