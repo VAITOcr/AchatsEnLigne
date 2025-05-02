@@ -14,7 +14,7 @@ if (isset($_SESSION['derniere_activite'])) {
         session_unset(); // Libérer toutes les variables de session
         session_destroy(); // Destruire la session
         // Si le temps de session est dépassé, rediriger vers la page de connexion
-        header("Location: index.php?msg=Votre session a expiré. Veuillez vous reconnecter.");
+        header("Location: ../../../index.php?msg=Votre session a expiré. Veuillez vous reconnecter.");
         exit();
     }
 }
@@ -66,9 +66,13 @@ if (!isset($_SESSION['agent']) || $_SESSION['agent'] !== $_SERVER['HTTP_USER_AGE
 
   <!-- Sidebar -->
 <div id="sidebar-admin">
-  <h4 class="text-center">Admin Panel</h4>
+  <img src="<?= $clientUrl ?>images/logoNew.png" alt="logo"  id="logo-admin" />
+  <h4 class="text-center">Admin Dashboard</h4>
   <a href="#" class="active" id="btn-articles"><i class="fa fa-cubes"></i> Articles</a>
   <a href="#" id="btn-users"><i class="fa fa-users"></i> Utilisateurs</a>
+  <a href="<?= $serveurUrl ?>src/connexion/deconnecter.php" class="btn-sortir">
+  <i class="fa fa-sign-out"></i> Sortir
+</a>
 </div>
 
 <!-- Contenu dynamique -->

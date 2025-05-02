@@ -1,48 +1,4 @@
 
-
-body {
-  font-family: 'Helvetica Neue', sans-serif;
-  background-color: #f4f6f9;
-  margin: 0;
-  padding: 0;
-}
-
-#sidebar-admin {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 220px;
-  height: 100vh;
-  background-color: #403934;
-  padding-top: 20px;
-  color: white;
-}
-
-#sidebar-admin h4 {
-  color: #fff;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-#sidebar-admin a {
-  display: block;
-  padding: 12px 20px;
-  color: #adb5bd;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-#sidebar-admin a:hover,
-#sidebar-admin a.active {
-  background-color: #495057;
-  color: white;
-}
-
-#contenu-admin {
-  margin-left: 220px;
-  padding: 20px;
-}
-
 .toast-message {
   position: fixed;
   top: 20px;
@@ -51,7 +7,73 @@ body {
   color: white;
   padding: 15px 20px;
   border-radius: 6px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   display: none;
   z-index: 9999;
+}
+
+body {
+  background-color: #f5f7fa; /* gris très doux */
+  font-family: "Segoe UI", sans-serif;
+}
+
+#sidebar-admin {
+  width: 230px;
+  background-color: #2c3e50; /* bleu foncé moderne */
+  color: white;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  padding: 20px 0;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+}
+
+#sidebar-admin h4 {
+  padding-bottom: 15px;
+  border-bottom: 1px solid #7f8c8d; /* ligne de séparation */
+  margin: 0 20px 20px 20px;
+}
+
+#sidebar-admin a {
+  display: block;
+  padding: 12px 20px;
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+#sidebar-admin a:hover,
+#sidebar-admin a.active {
+  background-color: #34495e;
+  color: white;
+}
+
+#logo-admin {
+  display: block;
+  max-width: 80%;
+  margin: 0 auto 20px auto;
+}
+
+#contenu-admin {
+  margin-left: 230px;
+  padding: 30px;
+}
+
+.btn-sortir {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  padding: 10px;
+  background-color: #e74c3c; /* rouge doux */
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-sortir:hover {
+  background-color: #c0392b;
+  color: white;
 }

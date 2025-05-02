@@ -1237,7 +1237,6 @@ html {
   display: block;
 }
 
-
 .facture-contenu {
   border: 2px solid #c70027;
   border-radius: 10px;
@@ -1256,7 +1255,6 @@ html {
   padding: 10px 0;
 }
 
-
 #confirmer-paiement {
   background-color: #c70027;
   color: #fff;
@@ -1272,3 +1270,5 @@ html {
 #confirmer-paiement:hover {
   background-color: #a90020;
 }
+
+
