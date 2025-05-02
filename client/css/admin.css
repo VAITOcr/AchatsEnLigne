@@ -13,13 +13,13 @@
 }
 
 body {
-  background-color: #f5f7fa; /* gris très doux */
+  background-color: #f5f7fa; 
   font-family: "Segoe UI", sans-serif;
 }
 
 #sidebar-admin {
   width: 230px;
-  background-color: #2c3e50; /* bleu foncé moderne */
+  background-color: #2c3e50; 
   color: white;
   position: fixed;
   top: 0;
@@ -30,7 +30,7 @@ body {
 
 #sidebar-admin h4 {
   padding-bottom: 15px;
-  border-bottom: 1px solid #7f8c8d; /* ligne de séparation */
+  border-bottom: 1px solid #7f8c8d; 
   margin: 0 20px 20px 20px;
 }
 
@@ -65,7 +65,7 @@ body {
   left: 20px;
   right: 20px;
   padding: 10px;
-  background-color: #e74c3c; /* rouge doux */
+  background-color: #e74c3c; 
   color: white;
   text-align: center;
   text-decoration: none;
