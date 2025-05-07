@@ -19,7 +19,7 @@ CREATE TABLE `articles` (
 
 
 INSERT INTO `articles` (`id`, `name`, `description`, `price`, `photo`, `featured`, `rating`, `categorie`) VALUES
-(31, 'iPhone 16', 'Smartphone Apple avec IA intégrée pour la recherche photo, création d\'émojis et reformulation de messages. Accent sur la protection des données personnelles.', 1399, 'Iphone16.png', 'Y', 5, 'Smartphone'),
+(31, 'iPhone 16', 'Smartphone Apple avec IA intégrée pour la recherche photo, création d\'émojis et reformulation de messages. Accent sur la protection des données personnelles.', 1399, 'iPhone16.png', 'Y', 5, 'Smartphone'),
 (32, 'Galaxy Z Flip4', 'Smartphone pliable de Samsung avec écran AMOLED 6,7 pouces, taux de rafraîchissement 120 Hz, et deux caméras arrière de 12 MP.', 1259.99, 'Galaxyflip4.png', 'Y', 4, 'Smartphone'),
 (33, 'DJI Flip', 'Drone pliable de moins de 250 g avec caméra 48 MP, enregistrement 4K/60fps, stabilisation à 3 axes et modes de vol intelligents.', 899, 'DJIflip.png', 'N', 4, 'Autres'),
 (34, 'HP Omen Transcend 32', 'Moniteur QD-OLED de 32 pouces avec haute luminosité, performances de jeu exceptionnelles et alimentation USB-C de 140 W.', 1299, 'HPomen32.png', 'N', 2, 'Moniteur'),

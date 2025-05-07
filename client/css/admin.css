@@ -114,3 +114,17 @@ body {
   margin-top: 60px;
   padding: 40px;
 }
+
+.apv_table_header {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+.apv_admin_page_header {
+  background-color: #e8f0ed;
+  padding: 5px 15px 5px 15px;
+  margin-bottom: 10px;
+}
+.apv_admin_page_header h3{
+ margin: 3px;
+}

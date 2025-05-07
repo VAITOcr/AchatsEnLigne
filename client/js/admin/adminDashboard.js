@@ -82,8 +82,13 @@ function afficherTableUsers() {
   const end = start + membresParPage;
   const pageMembres = allMembres.slice(start, end);
   let html = `
-    <h3>Liste des Membres</h3>
+    <div class="apv_admin_page_header">
+          <h3>Liste des Membres</h3>
+          <i>Ajouter, modifier, supprimer des membres</i>
+    </div>
+    <div class="apv_table_header">
      <button class="btn btn-success" id="btn-ajouter-user"><i class="fa fa-plus"></i> Ajouter un membre</button>
+    </div>
     <table class="table table-bordered table-striped" style="margin-top:15px;">
       <thead>
         <tr>
@@ -180,8 +185,11 @@ function afficherTableArticles() {
   const pageArticles = allArticles.slice(start, end);
 
   let html = `
-    <h3>Liste des Articles</h3>
-    <button class="btn btn-success" id="btn-ajouter-article"><i class="fa fa-plus"></i> Ajouter un Article</button>
+    <div class="apv_admin_page_header">
+      <h3>Liste des Articles</h3>
+      <i>Ajouter, modifier, supprimer des articles</i>
+    </div>
+    <div class="apv_table_header"><button class="btn btn-success" id="btn-ajouter-article"><i class="fa fa-plus"></i> Ajouter un Article</button></div>
     <table class="table table-bordered table-striped" style="margin-top:15px;">
       <thead>
         <tr>
@@ -445,6 +453,10 @@ function ouvrirModalSupprimer(id) {
   document.getElementById("id-article-a-supprimer").value = id;
   document.getElementById("nom-article-a-supprimer").textContent = article.name;
   $("#modalSupprimer").modal("show");
+  const btnSupp = document.getElementById("btn-confirmer-suppression");
+  btnSupp.addEventListener("click",()=>{
+    confirmerSuppression()
+  })
 }
 
 function setActiveSidebarButton(activeId) {
