@@ -123,6 +123,7 @@ body {
 .apv_admin_page_header {
   background-color: #e8f0ed;
   padding: 5px 15px 5px 15px;
+  margin-bottom: 10px;
 }
 .apv_admin_page_header h3{
  margin: 3px;
