@@ -32,6 +32,9 @@ git clone https://github.com/VAITOcr/AchatsEnLigne.git
 cd AchatsEnLigne
 npm install
 
+Compte ADMIN: alastor@gmail.com PASS: Kevincr44.
+Compte Membre: alastormembre@gmail.com PASS: Kevincr44.
+
 
 
 
