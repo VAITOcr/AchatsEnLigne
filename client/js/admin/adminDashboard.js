@@ -445,6 +445,10 @@ function ouvrirModalSupprimer(id) {
   document.getElementById("id-article-a-supprimer").value = id;
   document.getElementById("nom-article-a-supprimer").textContent = article.name;
   $("#modalSupprimer").modal("show");
+  const btnSupp = document.getElementById("btn-confirmer-suppression");
+  btnSupp.addEventListener("click",()=>{
+    confirmerSuppression()
+  })
 }
 
 function setActiveSidebarButton(activeId) {
