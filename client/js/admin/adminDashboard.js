@@ -82,7 +82,10 @@ function afficherTableUsers() {
   const end = start + membresParPage;
   const pageMembres = allMembres.slice(start, end);
   let html = `
-    <h3>Liste des Membres</h3>
+    <div class="apv_admin_page_header">
+          <h3>Liste des Membres</h3>
+          <i>Ajouter, modifier, supprimer des membres</i>
+    </div>
     <div class="apv_table_header">
      <button class="btn btn-success" id="btn-ajouter-user"><i class="fa fa-plus"></i> Ajouter un membre</button>
     </div>
